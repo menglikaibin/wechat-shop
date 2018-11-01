@@ -3,6 +3,11 @@
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
+use kartik\daterange\DateRangePicker;
+use kartik\base\Widget;
+
+
+echo DateRangePicker::BS_CAROUSEL_ITEM_LEFT;
 ?>
 <div class="site-index">
 

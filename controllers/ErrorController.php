@@ -10,6 +10,7 @@ class ErrorController extends Controller
 {
     public function actionError()
     {
+        $this->layout = false;
         $error = Yii::$app->errorHandler->exception;
 
         $err_msg = '';
@@ -37,7 +38,9 @@ class ErrorController extends Controller
             //todo 写入数据库
 
         }
-        return '错误页面<br/>错误信息:'.$err_msg;
+
+        return $this->render("error",["err_msg" => $err_msg]);
+//        return '错误页面<br/>错误信息:'.$err_msg;
 
     }
 

@@ -47,6 +47,14 @@ $config = [
         'urlManager' => $route,
     ],
     'params' => $params,
+    'modules' => [
+        'web' => [
+            'class' => 'app\modules\web\WebModule',
+        ],
+        'm' => [
+            'class' => 'app\modules\m\MModule',
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {
