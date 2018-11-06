@@ -45,6 +45,30 @@ $config = [
         ],
         'db' => $db,
         'urlManager' => $route,
+        'queue' =>
+        [
+            'class' => 'shmilyzxt\queue\queues\DatabaseQueue',//队列使用的类
+            'jobEvent' =>
+            [//队列任务时间配置,目前任务支持2个事件
+                'on beforeExecute' => ['shmilyzxt\queue\base\JobEventHandler','beforeExecute'],
+                'on beforeDelete' => ['shmilyzxt\queue\base\JobEventHandler','beforeDelete']
+            ],
+            'connector' => $db, //队列中间件链接器配置
+            'table' => 'jobs', //存储队列数据表名
+            'queue' => 'default', //队列名称
+            'expire' => 60,//任务过期时间
+            'maxJob' => 0,//队列允许最大任务数,0为不限制
+            'failed' =>
+            [//任务失败日志记录(目前只支持记录到数据库)
+                'logFail' => true, //开启任务失败处理
+                'provider' =>
+                [
+                    'class' => 'shmilyzxt\queue\failed\DatabaseFailedProvider',
+                    'db' => $db
+                ],
+                'table' => 'failed_jobs' //存储失败日志的表名
+            ]
+        ]
     ],
     'params' => $params,
     'modules' => [
