@@ -6450,7 +6450,7 @@ vjs.TextTrack.prototype.parseCueTime = function(timeText) {
   }
 
   // Break other (seconds, milliseconds, and flags) by spaces
-  // TODO: Make additional cue layout settings work with flags
+  // TODO: Make additional cue layouts settings work with flags
   other = other.split(/\s+/);
   // Remove seconds. Seconds is the first part before any spaces.
   seconds = other.splice(0,1)[0];

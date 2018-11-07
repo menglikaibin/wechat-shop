@@ -13,21 +13,21 @@ class BrandController extends Controller
 {
     public function actionInfo()
     {
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("info");
     }
 
     public function actionSet()
     {
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("set");
     }
 
     public function actionImages()
     {
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("images");
     }

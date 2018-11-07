@@ -8517,7 +8517,7 @@ var filterWord = UE.filterWord = function () {
                                 case "mso-margin-bottom-alt":
                                 case "mso-margin-left-alt":
                                 //ie下会出现挤到一起的情况
-                               //case "mso-table-layout-alt":
+                               //case "mso-table-layouts-alt":
                                 case "mso-height":
                                 case "mso-width":
                                 case "mso-vertical-align-alt":

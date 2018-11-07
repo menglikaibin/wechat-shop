@@ -13,28 +13,28 @@ class MemberController extends Controller
 {
     public function actionIndex()
     {
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("index");
     }
 
     public function actionInfo()
     {
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("info");
     }
 
     public function actionSet()
     {
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("set");
     }
 
     public function actionComment()
     {
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("comment");
     }

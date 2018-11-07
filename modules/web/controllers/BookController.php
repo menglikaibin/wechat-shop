@@ -13,28 +13,28 @@ class BookController extends Controller
 {
     public function actionIndex()
     {
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("index");
     }
 
     public function actionSet()
     {
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("set");
     }
 
     public function actionInfo()
     {
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("info");
     }
 
     public function actionImages()
     {
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("images");
     }
@@ -42,7 +42,7 @@ class BookController extends Controller
     //分类列表
     public function actionCat()
     {
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("cat");
     }
@@ -50,7 +50,7 @@ class BookController extends Controller
     //分类列表设置
     public function actionCatSet()
     {
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("cat_set");
     }

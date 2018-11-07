@@ -10,7 +10,7 @@ class ErrorController extends Controller
 {
     public function actionError()
     {
-        $this->layout = false;
+//        $this->layouts = false;
         $error = Yii::$app->errorHandler->exception;
 
         $err_msg = '';

@@ -10750,7 +10750,7 @@ Chart.prototype = {
 			chart.cloneRenderTo();
 		}
 
-		// Adjust title layout (reflow multiline text)
+		// Adjust title layouts (reflow multiline text)
 		chart.layOutTitles();
 
 		// link stacked series

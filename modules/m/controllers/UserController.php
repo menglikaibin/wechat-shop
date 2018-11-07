@@ -17,4 +17,68 @@ class UserController extends Controller
 
         return $this->render("bind");
     }
+
+    //用户购物侧
+    public function actionCart()
+    {
+        $this->layout = false;
+
+        return $this->render("cart");
+    }
+
+    //用户订单列表
+    public function actionOrder()
+    {
+        $this->layout = false;
+
+        return $this->render("order");
+    }
+
+    //我的
+    public function actionIndex()
+    {
+        $this->layout = false;
+
+        return $this->render("index");
+    }
+
+    //我的地址
+    public function actionAddress()
+    {
+        $this->layout = false;
+
+        return $this->render("address");
+    }
+
+    //编辑或添加地址
+    public function actionAddress_set()
+    {
+        $this->layout = false;
+
+        return $this->render("address_set");
+    }
+
+    //我的收藏
+    public function actionFav()
+    {
+        $this->layout = false;
+
+        return $this->render("fav");
+    }
+
+    //评论列表
+    public function actionComment()
+    {
+        $this->layout = false;
+
+        return $this->render("comment");
+    }
+
+    //添加评论
+    public function actionComment_set()
+    {
+        $this->layout = false;
+
+        return $this->render("comment_set");
+    }
 }

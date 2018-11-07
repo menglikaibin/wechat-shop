@@ -14,7 +14,7 @@ class AccountController extends Controller
     //账户列表
     public function actionIndex()
     {
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("index");
     }
@@ -22,7 +22,7 @@ class AccountController extends Controller
     //账户编辑或添加
     public function actionSet()
     {
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("set");
     }
@@ -30,7 +30,7 @@ class AccountController extends Controller
     //账户详情
     public function actionInfo()
     {
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("info");
     }

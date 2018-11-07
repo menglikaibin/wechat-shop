@@ -55,7 +55,7 @@ div.edui-box {
     display: inline !important;
 }
 
-/* control layout */
+/* control layouts */
 .edui-default .edui-button-body, .edui-splitbutton-body, .edui-menubutton-body, .edui-combox-body {
     position: relative;
 }
