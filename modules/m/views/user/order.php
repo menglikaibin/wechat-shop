@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <!-- Set render engine for 360 browser -->
-    <meta name="renderer" content="webkit">
-    <title>编程浪子微信图书商城</title>
-    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="/css/m/css_style.css" rel="stylesheet">
-    <link href="/css/m/app.css?ver=20170401" rel="stylesheet"></head>
-<body>
 <div style="min-height: 500px;">
     <div class="page_title clearfix">
         <span>订单列表</span>
@@ -26,7 +12,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <i class="pic">
-                        <img src="/uploads/book/20170316/d7330817f6279b882d57157ebeec7816.jpg"  style="width: 100px;height: 100px;"/>
+                        <img src="/uploads/book/20170316/d7330817f6279b882d57157ebeec7816.jpg"
+                             style="width: 100px;height: 100px;"/>
                     </i>
                     <h2>Hadoop权威指南(第3版) </h2>
                     <h3>&nbsp;</h3>
@@ -37,7 +24,7 @@
         </ul>
         <div class="op_box border-top">
             <a style="display: inline-block;" class="button close" data="33" href="javascript:void(0);">取消订单</a>
-            <a style="display: inline-block;" class="button"  href="/m/pay/buy/?pay_order_id=33">微信支付</a>
+            <a style="display: inline-block;" class="button" href="/m/pay/buy/?pay_order_id=33">微信支付</a>
         </div>
     </div>
 
@@ -51,7 +38,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <i class="pic">
-                        <img src="/uploads/book/20170316/d7330817f6279b882d57157ebeec7816.jpg"  style="width: 100px;height: 100px;"/>
+                        <img src="/uploads/book/20170316/d7330817f6279b882d57157ebeec7816.jpg"
+                             style="width: 100px;height: 100px;"/>
                     </i>
                     <h2>Hadoop权威指南(第3版) </h2>
                     <h3>&nbsp;</h3>
@@ -62,7 +50,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <i class="pic">
-                        <img src="/uploads/book/20170316/577fcac5eb54a401e3dfa659b6e5fe5f.jpg"  style="width: 100px;height: 100px;"/>
+                        <img src="/uploads/book/20170316/577fcac5eb54a401e3dfa659b6e5fe5f.jpg"
+                             style="width: 100px;height: 100px;"/>
                     </i>
                     <h2>高性能MySQL（第3版） </h2>
                     <h3>&nbsp;</h3>
@@ -85,7 +74,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <i class="pic">
-                        <img src="/uploads/book/20170303/a8887738ab1bfd71765dd063fee4ddaa.jpg"  style="width: 100px;height: 100px;"/>
+                        <img src="/uploads/book/20170303/a8887738ab1bfd71765dd063fee4ddaa.jpg"
+                             style="width: 100px;height: 100px;"/>
                     </i>
                     <h2>php开发教程 </h2>
                     <h3>&nbsp;</h3>
@@ -107,7 +97,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <i class="pic">
-                        <img src="/uploads/book/20170303/a8887738ab1bfd71765dd063fee4ddaa.jpg"  style="width: 100px;height: 100px;"/>
+                        <img src="/uploads/book/20170303/a8887738ab1bfd71765dd063fee4ddaa.jpg"
+                             style="width: 100px;height: 100px;"/>
                     </i>
                     <h2>php开发教程 </h2>
                     <h3>&nbsp;</h3>
@@ -128,7 +119,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <i class="pic">
-                        <img src="/uploads/book/20170303/a8887738ab1bfd71765dd063fee4ddaa.jpg"  style="width: 100px;height: 100px;"/>
+                        <img src="/uploads/book/20170303/a8887738ab1bfd71765dd063fee4ddaa.jpg"
+                             style="width: 100px;height: 100px;"/>
                     </i>
                     <h2>php开发教程 </h2>
                     <h3>&nbsp;</h3>
@@ -139,7 +131,7 @@
         </ul>
         <div class="op_box border-top">
             <a style="display: inline-block;" class="button close" data="29" href="javascript:void(0);">取消订单</a>
-            <a style="display: inline-block;" class="button"  href="/m/pay/buy/?pay_order_id=29">微信支付</a>
+            <a style="display: inline-block;" class="button" href="/m/pay/buy/?pay_order_id=29">微信支付</a>
         </div>
     </div>
 
@@ -155,7 +147,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <i class="pic">
-                        <img src="/uploads/book/20170301/7a976289c2c1f551a4f21232575ba255.jpg"  style="width: 100px;height: 100px;"/>
+                        <img src="/uploads/book/20170301/7a976289c2c1f551a4f21232575ba255.jpg"
+                             style="width: 100px;height: 100px;"/>
                     </i>
                     <h2>浪潮之巅 </h2>
                     <h3>&nbsp;</h3>
@@ -176,7 +169,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <i class="pic">
-                        <img src="/uploads/book/20170301/7a976289c2c1f551a4f21232575ba255.jpg"  style="width: 100px;height: 100px;"/>
+                        <img src="/uploads/book/20170301/7a976289c2c1f551a4f21232575ba255.jpg"
+                             style="width: 100px;height: 100px;"/>
                     </i>
                     <h2>浪潮之巅 </h2>
                     <h3>&nbsp;</h3>
@@ -197,7 +191,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <i class="pic">
-                        <img src="/uploads/book/20170303/a8887738ab1bfd71765dd063fee4ddaa.jpg"  style="width: 100px;height: 100px;"/>
+                        <img src="/uploads/book/20170303/a8887738ab1bfd71765dd063fee4ddaa.jpg"
+                             style="width: 100px;height: 100px;"/>
                     </i>
                     <h2>php开发教程 </h2>
                     <h3>&nbsp;</h3>
@@ -218,7 +213,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <i class="pic">
-                        <img src="/uploads/book/20170303/a8887738ab1bfd71765dd063fee4ddaa.jpg"  style="width: 100px;height: 100px;"/>
+                        <img src="/uploads/book/20170303/a8887738ab1bfd71765dd063fee4ddaa.jpg"
+                             style="width: 100px;height: 100px;"/>
                     </i>
                     <h2>php开发教程 </h2>
                     <h3>&nbsp;</h3>
@@ -239,7 +235,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <i class="pic">
-                        <img src="/uploads/book/20170303/a8887738ab1bfd71765dd063fee4ddaa.jpg"  style="width: 100px;height: 100px;"/>
+                        <img src="/uploads/book/20170303/a8887738ab1bfd71765dd063fee4ddaa.jpg"
+                             style="width: 100px;height: 100px;"/>
                     </i>
                     <h2>php开发教程 </h2>
                     <h3>&nbsp;</h3>
@@ -260,7 +257,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <i class="pic">
-                        <img src="/uploads/book/20170303/a8887738ab1bfd71765dd063fee4ddaa.jpg"  style="width: 100px;height: 100px;"/>
+                        <img src="/uploads/book/20170303/a8887738ab1bfd71765dd063fee4ddaa.jpg"
+                             style="width: 100px;height: 100px;"/>
                     </i>
                     <h2>php开发教程 </h2>
                     <h3>&nbsp;</h3>
@@ -281,7 +279,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <i class="pic">
-                        <img src="/uploads/book/20170301/7a976289c2c1f551a4f21232575ba255.jpg"  style="width: 100px;height: 100px;"/>
+                        <img src="/uploads/book/20170301/7a976289c2c1f551a4f21232575ba255.jpg"
+                             style="width: 100px;height: 100px;"/>
                     </i>
                     <h2>浪潮之巅 </h2>
                     <h3>&nbsp;</h3>
@@ -302,7 +301,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <i class="pic">
-                        <img src="/uploads/book/20170301/7a976289c2c1f551a4f21232575ba255.jpg"  style="width: 100px;height: 100px;"/>
+                        <img src="/uploads/book/20170301/7a976289c2c1f551a4f21232575ba255.jpg"
+                             style="width: 100px;height: 100px;"/>
                     </i>
                     <h2>浪潮之巅 </h2>
                     <h3>&nbsp;</h3>
@@ -323,7 +323,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <i class="pic">
-                        <img src="/uploads/book/20170303/a8887738ab1bfd71765dd063fee4ddaa.jpg"  style="width: 100px;height: 100px;"/>
+                        <img src="/uploads/book/20170303/a8887738ab1bfd71765dd063fee4ddaa.jpg"
+                             style="width: 100px;height: 100px;"/>
                     </i>
                     <h2>php开发教程 </h2>
                     <h3>&nbsp;</h3>
@@ -344,7 +345,8 @@
             <li>
                 <a href="javascript:void(0);">
                     <i class="pic">
-                        <img src="/uploads/book/20170301/7a976289c2c1f551a4f21232575ba255.jpg"  style="width: 100px;height: 100px;"/>
+                        <img src="/uploads/book/20170301/7a976289c2c1f551a4f21232575ba255.jpg"
+                             style="width: 100px;height: 100px;"/>
                     </i>
                     <h2>浪潮之巅 </h2>
                     <h3>&nbsp;</h3>
@@ -356,15 +358,4 @@
     </div>
 
 </div>
-<div class="copyright clearfix">
-    <p class="name">欢迎您，郭威</p>
-    <p class="copyright">由<a href="/" target="_blank">编程浪子</a>提供技术支持</p>
-</div>
-<div class="footer_fixed clearfix">
-    <span><a href="/m/" class="default"><i class="home_icon"></i><b>首页</b></a></span>
-    <span><a href="/m/product/index" class="product"><i class="store_icon"></i><b>图书</b></a></span>
-    <span><a href="/m/user/index" class="user"><i class="member_icon"></i><b>我的</b></a></span>
-</div>
 
-</body>
-</html>

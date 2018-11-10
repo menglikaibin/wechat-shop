@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function actionBind()
     {
-        $this->layout = false;
+        $this->layout = "user";
 
         return $this->render("bind");
     }
@@ -21,7 +21,7 @@ class UserController extends Controller
     //用户购物侧
     public function actionCart()
     {
-        $this->layout = false;
+        $this->layout = "user";
 
         return $this->render("cart");
     }
@@ -29,7 +29,7 @@ class UserController extends Controller
     //用户订单列表
     public function actionOrder()
     {
-        $this->layout = false;
+        $this->layout = "user";
 
         return $this->render("order");
     }
@@ -37,7 +37,7 @@ class UserController extends Controller
     //我的
     public function actionIndex()
     {
-        $this->layout = false;
+        $this->layout = "user";
 
         return $this->render("index");
     }
@@ -45,7 +45,7 @@ class UserController extends Controller
     //我的地址
     public function actionAddress()
     {
-        $this->layout = false;
+        $this->layout = "user";
 
         return $this->render("address");
     }
@@ -53,7 +53,7 @@ class UserController extends Controller
     //编辑或添加地址
     public function actionAddress_set()
     {
-        $this->layout = false;
+        $this->layout = "user";
 
         return $this->render("address_set");
     }
@@ -61,7 +61,7 @@ class UserController extends Controller
     //我的收藏
     public function actionFav()
     {
-        $this->layout = false;
+        $this->layout = "user";
 
         return $this->render("fav");
     }
@@ -69,7 +69,7 @@ class UserController extends Controller
     //评论列表
     public function actionComment()
     {
-        $this->layout = false;
+        $this->layout = "user";
 
         return $this->render("comment");
     }
@@ -77,7 +77,7 @@ class UserController extends Controller
     //添加评论
     public function actionComment_set()
     {
-        $this->layout = false;
+        $this->layout = "user";
 
         return $this->render("comment_set");
     }

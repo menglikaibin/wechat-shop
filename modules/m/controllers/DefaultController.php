@@ -18,7 +18,7 @@ class DefaultController extends Controller
     {
 //        print_r(Image::$driver);
 //        return $this->render('index');
-        $this->layout = false;
+        $this->layout = "main";
 
         return $this->render("index");
     }
