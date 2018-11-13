@@ -1,3 +1,10 @@
+<?php
+use app\assets\WebAsset;
+
+WebAsset::register($this);
+?>
+
+<?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,11 +12,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>管理后台</title>
-    <link href="/css/web/bootstrap.min.css" rel="stylesheet">
-    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="/css/web/style.css?ver=20170326180701" rel="stylesheet"></head>
-
+    <?php $this->head() ?>
+</head>
 <body>
+<?php $this->beginBody() ?>
+
 <div id="wrapper">
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
@@ -60,5 +67,9 @@
 
 
 </div>
+
+<?php $this->endBody() ?>
 </body>
 </html>
+
+<?php $this->endPage() ?>

@@ -1,10 +1,22 @@
+<?php
+//引入前端资源
+use app\assets\AppAsset;
+
+AppAsset::register($this);
+?>
+<?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>编程浪子微信图书商城</title>
-    <link href="/css/www/app.css" rel="stylesheet"></head>
+    <?php $this->head(); ?><!--css head区域 js放在body之前-->
+    <!--    <link href="/css/www/app.css" rel="stylesheet"></head>-->
 <body>
+<?php $this->beginBody(); ?>
+
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
         <div class="navbar-collapse collapse pull-left">
@@ -17,11 +29,10 @@
     </div>
 </div>
 
-<!--需要放入不同的内容begin-->
-
 <?= $content; ?>
 
-<!--需要放入不同的内容begin-->
+<?php $this->endBody(); ?>
+</body>
+</html>
 
-
-</body></html>
+<?php $this->endPage() ?>

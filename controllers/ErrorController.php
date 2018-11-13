@@ -2,11 +2,12 @@
 
 namespace app\controllers;
 
+use app\common\component\BaseWebController;
 use yii\log\FileTarget;
 use yii\web\Controller;
 use Yii;
 
-class ErrorController extends Controller
+class ErrorController extends BaseWebController
 {
     public function actionError()
     {
