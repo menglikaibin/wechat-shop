@@ -7,31 +7,38 @@
  */
 namespace app\modules\web\controllers;
 
-use yii\web\Controller;
+use app\common\component\BaseWebController;
 
-class UserController extends Controller
+class UserController extends BaseWebController
 {
+    public function __construct($id, $module, array $config = [])
+    {
+        parent::__construct($id, $module, $config);
+        $this->layout = "main";
+    }
+
     //登录页面
     public function actionLogin()
     {
         $this->layout = false;
 
-        return $this->render("login");
+        if (\Yii::$app->request->isGet) {
+            return $this->render("login");
+        }
+
+        //登录逻辑处理
+
     }
 
     //编辑登录人信息
     public function actionEdit()
     {
-        $this->layout = "main";
-
         return $this->render("edit");
     }
 
     //重置密码
     public function actionResetPwd()
     {
-        $this->layout = "main";
-
         return $this->render("reset_pwd");
     }
 }
