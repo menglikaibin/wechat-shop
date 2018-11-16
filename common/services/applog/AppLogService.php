@@ -8,10 +8,7 @@
 
 namespace app\common\services\applog;
 
-use app\common\services\UrlService;
-use app\common\services\UtilService;
 use app\models\log\AppLog;
-use SebastianBergmann\CodeCoverage\Util;
 
 class AppLogService
 {
@@ -28,6 +25,20 @@ class AppLogService
         if (!empty($_SERVER['HTTP_USER_AGENT'])) {
             $model_app_log->ua = $_SERVER['HTTP_USER_AGENT'];
         }
+
+        if ($error) {
+            $model_app_log->err_code = $error->getCode();
+            if (isset($error->statusCode)) {
+                $model_app_log->http_code = $error->statusCode;
+            }
+
+            if (method_exists($error, "getName")) {
+                $model_app_log->err_name = $error->getName();
+            }
+        }
+
+        $model_app_log->created_time = date('Y-m-d H:i:s');
+        $model_app_log->save(0);
     }
 
 }

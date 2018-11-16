@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\common\component\BaseWebController;
+use app\common\services\applog\AppLogService;
 use yii\log\FileTarget;
 use yii\web\Controller;
 use Yii;
@@ -38,6 +39,7 @@ class ErrorController extends BaseWebController
             $log->export();
             //todo 写入数据库
 
+            AppLogService::addErrorLog(Yii::$app->id, $err_msg);
 
         }
 

@@ -61,7 +61,15 @@ class UserController extends BaseController
     //编辑登录人信息
     public function actionEdit()
     {
-        return $this->render("edit");
+        //判断是否是get请求,如果是get请求那就展示页面
+        if (\Yii::$app->request->isGet) {
+            //获取当前登录人的信息
+
+            return $this->render("edit",['user_info'=>$this->current_user]);
+        }
+
+
+
     }
 
     //重置密码

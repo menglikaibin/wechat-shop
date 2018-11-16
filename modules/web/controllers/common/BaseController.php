@@ -18,6 +18,7 @@ use app\models\User;
 class BaseController extends BaseWebController
 {
     protected $auth_cookie_name = "mooc_book";
+    public $current_user = null;//当前登录人信息
 
     public $allowAllAction = [
         "web/user/login"
@@ -80,6 +81,10 @@ class BaseController extends BaseWebController
         if ($auth_token != $auth_token_md5) {
             return false;
         }
+
+        //给变量赋值
+        $this->current_user = $user_info;
+
         return true;
 
     }
