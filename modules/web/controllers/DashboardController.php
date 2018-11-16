@@ -7,9 +7,10 @@
  */
 namespace app\modules\web\controllers;
 
+use app\modules\web\controllers\common\BaseController;
 use yii\web\Controller;
 
-class DashboardController extends Controller
+class DashboardController extends BaseController
 {
     public function actionIndex()
     {

@@ -68,4 +68,10 @@ class BaseWebController extends Controller
         ]);
     }
 
+    //返回js信息
+    public function renderJs($msg, $url)
+    {
+        return $this->renderPartial("@app/views/common/js", ['msg' => $msg, 'url' => $url]);
+    }
+
 }

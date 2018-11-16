@@ -38,6 +38,7 @@ class ErrorController extends BaseWebController
             $log->export();
             //todo 写入数据库
 
+
         }
 
         return $this->render("error",["err_msg" => $err_msg]);
