@@ -64,7 +64,7 @@ class BaseWebController extends Controller
             "code" => $code,
             "msg" => $msg,
             "data" => $data,
-            "req_id" => unique()
+            "req_id" => uniqid()
         ]);
     }
 

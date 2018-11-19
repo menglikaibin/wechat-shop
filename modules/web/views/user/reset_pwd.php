@@ -1,3 +1,6 @@
+<?php
+Yii::$app->getView()->registerJsFile("@web/js/web/user/reset_pwd.js", ['depends' => app\assets\WebAsset::className()]);
+?>
 <div class="row border-bottom">
     <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
@@ -7,9 +10,9 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-						<span class="m-r-sm text-muted welcome-message">
-                            欢迎使用编程浪子图书商城管理后台
-                        </span>
+                <span class="m-r-sm text-muted welcome-message">
+                    欢迎使用编程浪子图书商城管理后台
+                </span>
             </li>
             <li class="hidden">
                 <a class="count-info" href="javascript:void(0);">
@@ -74,14 +77,14 @@
             <div class="form-group">
                 <label class="col-lg-2 control-label">账号:</label>
                 <div class="col-lg-10">
-                    <label class="control-label">编程浪子郭大爷</label>
+                    <label class="control-label"><?= $user_info['nickname'] ?></label>
                 </div>
             </div>
             <div class="hr-line-dashed"></div>
             <div class="form-group">
                 <label class="col-lg-2 control-label">手机:</label>
                 <div class="col-lg-10">
-                    <label class="control-label">11012345679</label>
+                    <label class="control-label"><?= $user_info['mobile'];?></label>
                 </div>
             </div>
             <div class="hr-line-dashed"></div>

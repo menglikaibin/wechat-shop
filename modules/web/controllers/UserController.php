@@ -68,6 +68,23 @@ class UserController extends BaseController
             return $this->render("edit",['user_info'=>$this->current_user]);
         }
 
+        $nickname = trim($this->post("nickname",""));
+        $email = trim($this->post("email",""));
+        if (mb_strlen($nickname, "utf-8") < 1) {
+            return $this->renderJson([], "请输入合法的用户名", -1);
+        }
+
+        if (mb_strlen($email, "utf-8") < 1) {
+            return $this->renderJson([], "请输入合法的邮箱", -1);
+        }
+
+        $user_info = $this->current_user;
+        $user_info->nickname = $nickname;
+        $user_info->email = $email;
+        $user_info->updated_time = date("Y-m-d H:i:s");
+        $user_info->update(0);
+        return $this->renderJson([],"编辑成功");
+
 
 
     }
@@ -75,7 +92,40 @@ class UserController extends BaseController
     //重置密码
     public function actionResetPwd()
     {
-        return $this->render("reset_pwd");
+        if (\Yii::$app->request->isGet) {
+            return $this->render('reset_pwd',[
+               'user_info' => $this->current_user
+            ]);
+        }
+        $user_info = $this->current_user;
+
+        $old_password = trim($this->post("old_password"));
+        $new_password = trim($this->post("new_password"));
+
+        if (mb_strlen($old_password < 1)) {
+            return $this->renderJson([], "请输入原密码", -1);
+        }
+        if (mb_strlen($new_password < 6)) {
+            return $this->renderJson([], "请输入一个不小于6位的新密码", -1);
+        }
+
+
+        //判断原密码是否正确
+        $pwd = md5($old_password . md5($user_info['login_salt']));
+//        print_r($pwd);die;
+//        if ($pwd != $this->$user_info['login_pwd']) {
+//            return $this->renderJson([], "请输入正确的原密码~~", -1);
+//        }
+
+        $login_pwd = md5($new_password . md5($user_info['login_salt']));
+
+        $user_info->login_pwd = $login_pwd;
+        $user_info->updated_time = date('Y-m-d H:i:s');
+        $user_info->update(0);
+
+        //
+
+        return $this->renderJson([], "重置密码成功~~", 200);
     }
 
     //用户退出
