@@ -1,5 +1,9 @@
 <?php
 use app\common\services\UrlService;
+use app\common\services\ConstantMapService;
+use app\common\services\StaticService;
+
+StaticService::includeAppJsStatic("@web/js/web/account/index.js", ['depends' => \app\assets\WebAsset::className()]);
 ?>
 <div class="row  border-bottom">
     <div class="col-lg-12">
@@ -18,15 +22,16 @@ use app\common\services\UrlService;
             <div class="row m-t p-w-m">
                 <div class="form-group">
                     <select name="status" class="form-control inline">
-                        <option value="-1">请选择状态</option>
-                        <option value="1">正常</option>
-                        <option value="0">已删除</option>
+                        <option value="<?= ConstantMapService::$status_default; ?>">请选择状态</option>
+                        <?php foreach($status_mapping as $status => $item): ?>
+                        <option value="<?= $status?>"><?php if ($status==$search_status['status']):?>selected<?php endif; ?><?= $item?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="text" name="mix_kw" placeholder="请输入姓名或者手机号码" class="form-control" value="">
+                        <input type="text" name="mix_kw" placeholder="请输入姓名或者手机号码" class="form-control" value="<?= $search_status['mix_kw'];?>">
                         <input type="hidden" name="p" value="1">
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-primary search">

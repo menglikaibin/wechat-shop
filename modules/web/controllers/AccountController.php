@@ -7,6 +7,7 @@
  */
 namespace app\modules\web\controllers;
 
+use app\common\services\ConstantMapService;
 use app\models\User;
 use app\modules\web\controllers\common\BaseController;
 
@@ -21,10 +22,30 @@ class AccountController extends BaseController
     //账户列表
     public function actionIndex()
     {
-        $list = User::find()->orderBy(['uid' => SORT_DESC])->all();
+        $status = intval($this->get("status", ConstantMapService::$status_default));
+        $mix_kw = trim($this->get("mix_kw",""));
+
+        $query = User::find();
+
+        if ($status > ConstantMapService::$status_default) {
+            $query->andWhere(['status' => $status]);
+        }
+
+        if ($mix_kw) {
+            $where_nickname = ['like', 'nickname', '%'.$mix_kw.'%',false];
+            $where_mobile = ['like', 'mobile', '%'.$mix_kw.'%', false];
+            $query->andWhere(['or', $where_nickname, $where_mobile]);
+        }
+
+
+        $list = $query->orderBy(['uid' => SORT_DESC])->all();
         return $this->render("index",[
             'list' => $list,
-            ''
+            'status_mapping' => ConstantMapService::$status_mapping,
+            'search_status' => [
+                'status' => $status,
+                'mix_kw' => $mix_kw
+            ]
         ]);
     }
 
