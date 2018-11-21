@@ -7,31 +7,36 @@
  */
 namespace app\modules\web\controllers;
 
-use yii\web\Controller;
+use app\models\User;
+use app\modules\web\controllers\common\BaseController;
 
-class AccountController extends Controller
+class AccountController extends BaseController
 {
+    public function __construct($id, $module, array $config = [])
+    {
+        parent::__construct($id, $module, $config);
+        $this->layout = "main";
+    }
+
     //账户列表
     public function actionIndex()
     {
-        $this->layout = "main";
-
-        return $this->render("index");
+        $list = User::find()->orderBy(['uid' => SORT_DESC])->all();
+        return $this->render("index",[
+            'list' => $list,
+            ''
+        ]);
     }
 
     //账户编辑或添加
     public function actionSet()
     {
-        $this->layout = "main";
-
         return $this->render("set");
     }
 
     //账户详情
     public function actionInfo()
     {
-        $this->layout = "main";
-
         return $this->render("info");
     }
 }

@@ -25,7 +25,7 @@ var user_reset_pwd_ops = {
           btn_target.addClass("disabled");
 
           $.ajax({
-              url:'/web/user/reset-pwd',
+              url:common_ops.buildWebUrl('/user/reset_pwd'),
               type:'POST',
               data:{
                   old_password:old_pwd,

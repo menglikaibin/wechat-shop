@@ -22,6 +22,26 @@ use Yii;
  */
 class User extends \yii\db\ActiveRecord
 {
+    public function setPassword($password)
+    {
+        $this->login_pwd = $this->setSaltPassword($password);
+    }
+
+
+    //生成加密密码
+    public function setSaltPassword($password)
+    {
+        return md5($password . md5($this->login_salt));
+    }
+
+    //校验密码是否一致
+    public function verifyPassword($password)
+    {
+        return $this->setSaltPassword($password) == $this->login_pwd;
+    }
+
+
+
     /**
      * {@inheritdoc}
      */

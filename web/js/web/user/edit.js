@@ -27,7 +27,7 @@ var user_edit_ops = {
             btn_target.addClass("disabled");
 
             $.ajax({
-                url: '/web/user/edit',
+                url: common_ops.buildWebUrl('/user/edit'),
                 type: 'POST',
                 data:{
                     nickname:nickname,
