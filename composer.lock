@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e7176400dc90848cc598214810b46b0",
+    "content-hash": "cf034ca279f43f4b0fb16a40ceca5fa8",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -330,12 +330,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-date-range.git",
-                "reference": "3cec83d6f2882b8fec85d3f532cd711aea5ad339"
+                "reference": "898b1ffdbc60ede637757df9ae4ed1531de4a01f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-date-range/zipball/3cec83d6f2882b8fec85d3f532cd711aea5ad339",
-                "reference": "3cec83d6f2882b8fec85d3f532cd711aea5ad339",
+                "url": "https://api.github.com/repos/kartik-v/yii2-date-range/zipball/898b1ffdbc60ede637757df9ae4ed1531de4a01f",
+                "reference": "898b1ffdbc60ede637757df9ae4ed1531de4a01f",
                 "shasum": ""
             },
             "require": {
@@ -376,21 +376,25 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-10-09T12:34:51+00:00"
+            "time": "2018-11-05T10:58:19+00:00"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
-            "version": "v2.0.0",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-krajee-base.git",
-                "reference": "71bfaf2450d0b338a35d2818039e1c7637e75481"
+                "reference": "11896b44c3d70666b057c9153f2f77aeeb078ff6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/71bfaf2450d0b338a35d2818039e1c7637e75481",
-                "reference": "71bfaf2450d0b338a35d2818039e1c7637e75481",
+                "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/11896b44c3d70666b057c9153f2f77aeeb078ff6",
+                "reference": "11896b44c3d70666b057c9153f2f77aeeb078ff6",
                 "shasum": ""
+            },
+            "suggest": {
+                "yiisoft/yii2-bootstrap": "for Krajee extensions to work with Bootstrap 3.x version",
+                "yiisoft/yii2-bootstrap4": "for Krajee extensions to work with Bootstrap 4.x version"
             },
             "type": "yii2-extension",
             "extra": {
@@ -424,7 +428,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2018-10-09T07:54:35+00:00"
+            "time": "2018-11-27T03:22:26+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -781,6 +785,58 @@
             "time": "2018-03-21T18:36:53+00:00"
         },
         {
+            "name": "yiisoft/yii2-authclient",
+            "version": "2.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-authclient.git",
+                "reference": "51ed208515a2d04c538b2c498c4f760481a431b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/51ed208515a2d04c538b2c498c4f760481a431b5",
+                "reference": "51ed208515a2d04c538b2c498c4f760481a431b5",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2-httpclient": "~2.0.5"
+            },
+            "suggest": {
+                "spomky-labs/jose": "required for JWS,JWT or JWK related flows like OpenIDConnect"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\authclient\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Paul Klimov",
+                    "email": "klimov.paul@gmail.com"
+                }
+            ],
+            "description": "External authentication via OAuth and OpenID for the Yii framework",
+            "keywords": [
+                "OpenID Connect",
+                "OpenId",
+                "api",
+                "auth",
+                "oauth",
+                "yii2"
+            ],
+            "time": "2018-09-20T07:23:55+00:00"
+        },
+        {
             "name": "yiisoft/yii2-bootstrap",
             "version": "2.0.8",
             "source": {
@@ -893,6 +949,53 @@
                 "yii2"
             ],
             "time": "2018-07-05T15:44:47+00:00"
+        },
+        {
+            "name": "yiisoft/yii2-httpclient",
+            "version": "2.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-httpclient.git",
+                "reference": "360b0f9c0855709b3370d486a4de435022fb3926"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-httpclient/zipball/360b0f9c0855709b3370d486a4de435022fb3926",
+                "reference": "360b0f9c0855709b3370d486a4de435022fb3926",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.13"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\httpclient\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Paul Klimov",
+                    "email": "klimov.paul@gmail.com"
+                }
+            ],
+            "description": "HTTP client extension for the Yii framework",
+            "keywords": [
+                "curl",
+                "http",
+                "httpclient",
+                "yii2"
+            ],
+            "time": "2018-09-23T21:53:35+00:00"
         },
         {
             "name": "yiisoft/yii2-imagine",
@@ -2885,16 +2988,16 @@
         },
         {
             "name": "symfony/browser-kit",
-            "version": "v4.1.7",
+            "version": "v4.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/browser-kit.git",
-                "reference": "c55fe9257003b2d95c0211b3f6941e8dfd26dffd"
+                "reference": "1c4e2f368a09cd33bf4b6e4a4a32b361a16ef1db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/browser-kit/zipball/c55fe9257003b2d95c0211b3f6941e8dfd26dffd",
-                "reference": "c55fe9257003b2d95c0211b3f6941e8dfd26dffd",
+                "url": "https://api.github.com/repos/symfony/browser-kit/zipball/1c4e2f368a09cd33bf4b6e4a4a32b361a16ef1db",
+                "reference": "1c4e2f368a09cd33bf4b6e4a4a32b361a16ef1db",
                 "shasum": ""
             },
             "require": {
@@ -2938,20 +3041,20 @@
             ],
             "description": "Symfony BrowserKit Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26T09:10:45+00:00"
+            "time": "2018-11-26T10:26:29+00:00"
         },
         {
             "name": "symfony/console",
-            "version": "v4.1.7",
+            "version": "v4.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "432122af37d8cd52fba1b294b11976e0d20df595"
+                "reference": "c74f4d1988dfcd8760273e53551694da32b056d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/432122af37d8cd52fba1b294b11976e0d20df595",
-                "reference": "432122af37d8cd52fba1b294b11976e0d20df595",
+                "url": "https://api.github.com/repos/symfony/console/zipball/c74f4d1988dfcd8760273e53551694da32b056d0",
+                "reference": "c74f4d1988dfcd8760273e53551694da32b056d0",
                 "shasum": ""
             },
             "require": {
@@ -3006,20 +3109,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-10-31T09:30:44+00:00"
+            "time": "2018-11-26T14:00:40+00:00"
         },
         {
             "name": "symfony/css-selector",
-            "version": "v4.1.7",
+            "version": "v4.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "d67de79a70a27d93c92c47f37ece958bf8de4d8a"
+                "reference": "9e4dc57949853315561f0cd5eb84d0707465502a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/d67de79a70a27d93c92c47f37ece958bf8de4d8a",
-                "reference": "d67de79a70a27d93c92c47f37ece958bf8de4d8a",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/9e4dc57949853315561f0cd5eb84d0707465502a",
+                "reference": "9e4dc57949853315561f0cd5eb84d0707465502a",
                 "shasum": ""
             },
             "require": {
@@ -3059,20 +3162,20 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "time": "2018-10-02T16:36:10+00:00"
+            "time": "2018-11-11T19:51:29+00:00"
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v4.1.7",
+            "version": "v4.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "80e60271bb288de2a2259662cff125cff4f93f95"
+                "reference": "a9f533524dcc3970a2c06ee1ec0bba35d3f5910e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/80e60271bb288de2a2259662cff125cff4f93f95",
-                "reference": "80e60271bb288de2a2259662cff125cff4f93f95",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/a9f533524dcc3970a2c06ee1ec0bba35d3f5910e",
+                "reference": "a9f533524dcc3970a2c06ee1ec0bba35d3f5910e",
                 "shasum": ""
             },
             "require": {
@@ -3116,20 +3219,20 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2018-10-02T12:40:59+00:00"
+            "time": "2018-11-26T10:26:29+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v4.1.7",
+            "version": "v4.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "552541dad078c85d9414b09c041ede488b456cd5"
+                "reference": "8b93ce06506d58485893e2da366767dcc5390862"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/552541dad078c85d9414b09c041ede488b456cd5",
-                "reference": "552541dad078c85d9414b09c041ede488b456cd5",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/8b93ce06506d58485893e2da366767dcc5390862",
+                "reference": "8b93ce06506d58485893e2da366767dcc5390862",
                 "shasum": ""
             },
             "require": {
@@ -3179,20 +3282,20 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2018-10-10T13:52:42+00:00"
+            "time": "2018-11-26T10:26:29+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v4.1.7",
+            "version": "v4.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "1f17195b44543017a9c9b2d437c670627e96ad06"
+                "reference": "68fbdcafe915db67adb13fddaec4532e684f6689"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/1f17195b44543017a9c9b2d437c670627e96ad06",
-                "reference": "1f17195b44543017a9c9b2d437c670627e96ad06",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/68fbdcafe915db67adb13fddaec4532e684f6689",
+                "reference": "68fbdcafe915db67adb13fddaec4532e684f6689",
                 "shasum": ""
             },
             "require": {
@@ -3228,7 +3331,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2018-10-03T08:47:56+00:00"
+            "time": "2018-11-11T19:51:29+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -3349,16 +3452,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.1.7",
+            "version": "v4.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "367e689b2fdc19965be435337b50bc8adf2746c9"
+                "reference": "fe87e3b24d15ec8948f0280ee867a65ca44fdbaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/367e689b2fdc19965be435337b50bc8adf2746c9",
-                "reference": "367e689b2fdc19965be435337b50bc8adf2746c9",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/fe87e3b24d15ec8948f0280ee867a65ca44fdbaa",
+                "reference": "fe87e3b24d15ec8948f0280ee867a65ca44fdbaa",
                 "shasum": ""
             },
             "require": {
@@ -3404,7 +3507,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2018-10-02T16:36:10+00:00"
+            "time": "2018-11-11T19:51:29+00:00"
         },
         {
             "name": "theseer/tokenizer",

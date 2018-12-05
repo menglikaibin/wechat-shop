@@ -24,6 +24,7 @@ class AccountController extends BaseController
     {
         $status = intval($this->get("status", ConstantMapService::$status_default));
         $mix_kw = trim($this->get("mix_kw",""));
+        $p = intval($this->get("p", 1));
 
         $query = User::find();
 
@@ -37,6 +38,11 @@ class AccountController extends BaseController
             $query->andWhere(['or', $where_nickname, $where_mobile]);
         }
 
+        //分页功能,1:总记录数量 2:每页展示的数量
+        $page_size = 50;
+        $total_res_count = $query->count();
+        $total_page = ceil($total_res_count/$page_size);
+
 
         $list = $query->orderBy(['uid' => SORT_DESC])->all();
         return $this->render("index",[
@@ -44,7 +50,14 @@ class AccountController extends BaseController
             'status_mapping' => ConstantMapService::$status_mapping,
             'search_status' => [
                 'status' => $status,
-                'mix_kw' => $mix_kw
+                'mix_kw' => $mix_kw,
+                'p' => $p
+            ],
+            'pages' => [
+                'total_count' => $total_res_count,
+                'page_size' => $page_size,
+                'total_page' => $total_page,
+                'p' => $p
             ]
         ]);
     }
