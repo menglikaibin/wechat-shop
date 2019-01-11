@@ -5,17 +5,9 @@ use app\common\services\StaticService;
 
 StaticService::includeAppJsStatic("@web/js/web/account/index.js", ['depends' => \app\assets\WebAsset::className()]);
 ?>
-<div class="row  border-bottom">
-    <div class="col-lg-12">
-        <div class="tab_title">
-            <ul class="nav nav-pills">
-                <li class="current">
-                    <a href="/web/account/index">账户列表</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+<?= Yii::$app->view->renderFile("@app/modules/web/views/common/tab_account.php", ['current'=>'index']);?>
+
+
 <div class="row">
     <div class="col-lg-12">
         <form class="form-inline wrap_search">
@@ -85,9 +77,20 @@ StaticService::includeAppJsStatic("@web/js/web/account/index.js", ['depends' => 
         </table>
         <div class="row">
             <div class="col-lg-12">
-                <span class="pagination_count" style="line-height: 40px;">共2条记录 | 每页50条</span>
+                <span class="pagination_count" style="line-height: 40px;">共<?= $pages['total_count']; ?>条记录 | 每页50条</span>
                 <ul class="pagination pagination-lg pull-right" style="margin: 0 0 ;">
-                    <li class="active"><a href="javascript:void(0);">1</a></li>
+                    <?php for($page=1;$page<=$pages['total_page'];$page++): ?>
+
+                        <?php if($page==$pages['p']):?>
+                            <li class="active">
+                                <a href="<?= UrlService::buildNullUrl(); ?>"><?= $page; ?></a>
+                            </li>
+                        <?php else: ?>
+                            <li>
+                                <a href="<?= UrlService::buildWebUrl("/account/index",['p'=>$page]) ?>"><?= $page; ?></a>
+                            </li>
+                        <?php endif; ?>
+                    <?php endfor; ?>
                 </ul>
             </div>
         </div>
