@@ -80,4 +80,28 @@ class AccountController extends BaseController
     {
         return $this->render("info");
     }
+
+    //删除账户
+    public function actionOps()
+    {
+        if (!\Yii::$app->request->isPost) {
+            return $this->renderJson([], '系统繁忙,请稍后再试', -1);
+        }
+
+        $uid = intval($this->post("uid", 0));
+        $act = trim($this->post("act",""));
+
+        if (!$uid) {
+            return $this->renderJson([], "请选择要操作的账号", -1);
+        }
+
+        if (!$act) {
+            return $this->renderJson([], "请选择要进行的操作", -1);
+        }
+
+        if (in_array($act, ['remove'])) {
+            return $this->renderJson([], "操作有误,请重新选择", -1);
+        }
+    }
+
 }
