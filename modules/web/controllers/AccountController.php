@@ -39,7 +39,7 @@ class AccountController extends BaseController
         }
 
         //分页功能,1:总记录数量 2:每页展示的数量
-        $page_size = 1;
+        $page_size = 3;
         $total_res_count = $query->count();
         $total_page = ceil($total_res_count/$page_size);
 
@@ -99,9 +99,28 @@ class AccountController extends BaseController
             return $this->renderJson([], "请选择要进行的操作", -1);
         }
 
-        if (in_array($act, ['remove'])) {
+
+        if (!in_array($act, ['remove', 'recover'])) {
             return $this->renderJson([], "操作有误,请重新选择", -1);
         }
-    }
 
+        $user_info = User::find()->where(['uid' => $uid])->one();
+        if (!$user_info) {
+            return $this->renderJson([], "您指定的账号不存在~~", -1);
+        }
+
+        switch ($act)
+        {
+            case "remove":
+                $user_info->status = 0;
+                break;
+            case "recover":
+                $user_info->status = 1;
+                break;
+        }
+
+        $user_info->updated_time = date('Y-m-d H:i:s');
+        $user_info->update(0);
+        return $this->renderJson([], "操作成功");
+    }
 }

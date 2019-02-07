@@ -12,7 +12,11 @@ var account_index_ops = {
 
         $(".remove").click(function () {
             that.ops("remove", $(this).attr("data"));
-        })
+        });
+        
+        $(".recover").click(function () {
+            that.ops("recover", $(this).attr("data"));
+        });
     },
 
     ops: function(act, uid){
@@ -25,7 +29,10 @@ var account_index_ops = {
             },
             dataType: "json",
             success: function (res) {
-
+                alert(res.message);
+                if (res.code == 200) {
+                    window.location.href = window.location.href;
+                }
             }
         })
     }
