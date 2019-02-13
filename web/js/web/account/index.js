@@ -20,23 +20,36 @@ var account_index_ops = {
     },
 
     ops: function(act, uid){
-        $.ajax({
-            url: common_ops.buildWebUrl("/account/ops"),
-            type: "POST",
-            data: {
-                act: act,
-                uid: uid
-            },
-            dataType: "json",
-            success: function (res) {
-                alert(res.message);
-                if (res.code == 200) {
-                    window.location.href = window.location.href;
-                }
-            }
-        })
-    }
+        callBack =
+            {
+            "ok": function ()
+                {
+                    $.ajax({
+                        url: common_ops.buildWebUrl("/account/ops"),
+                        type: "POST",
+                        data: {act: act, uid: uid},
+                        dataType: "json",
+                        success: function (res) {
+                            cb = null;
 
+                            if (res.code == 200) {
+                                cb = function() {
+                                    window.location.href = window.location.href;
+                                }
+
+                            }
+
+                            common_ops.alert(res.msg, cb);
+                        }
+                    })
+                },
+            "cancle": function ()
+                {
+
+                }
+            };
+        common_ops.confirm((act == "remove") ? "您确定删除吗?" : "您确定恢复吗", callBack);
+    }
 };
 
 $(document).ready(function () {
