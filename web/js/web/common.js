@@ -129,7 +129,7 @@ var common_ops = {
         var domain = "http://" + window.location.hostname;
         return domain + upload_config[ bucket ] + "/" + img_key;
     },
-    alert:function( msg ,cb ){
+    alert:function(msg, cb){
         layer.alert( msg,{
             yes:function( index ){
                 if( typeof cb == "function" ){
@@ -139,23 +139,31 @@ var common_ops = {
             }
         });
     },
-    confirm:function( msg,callback ){
+    confirm:function( msg,callback )
+    {
         callback = ( callback != undefined )?callback: { 'ok':null, 'cancel':null };
-        layer.confirm( msg , {
+        layer.confirm( msg ,
+        {
             btn: ['确定','取消'] //按钮
-        }, function( index ){
-            //确定事件
-            if( typeof callback.ok == "function" ){
-                callback.ok();
-            }
-            layer.close( index );
-        }, function( index ){
-            //取消事件
-            if( typeof callback.cancel == "function" ){
-                callback.cancel();
-            }
-            layer.close( index );
-        });
+        },
+            function( index )
+            {
+                //确定事件
+                if( typeof callback.ok == "function" )
+                {
+                    callback.ok();
+                }
+                layer.close( index );
+            },
+            function( index )
+            {
+                //取消事件
+                if( typeof callback.cancel == "function" )
+                {
+                    callback.cancel();
+                }
+                layer.close( index );
+            });
     },
     tip:function( msg,target ){
         layer.tips( msg, target, {
