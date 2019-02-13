@@ -11,10 +11,14 @@ var account_index_ops = {
         });
 
         $(".remove").click(function () {
+            if (!confirm("您确定删除吗?")) {
+                return;
+            }
             that.ops("remove", $(this).attr("data"));
         });
-        
+
         $(".recover").click(function () {
+            layer.confirm();
             that.ops("recover", $(this).attr("data"));
         });
     },
@@ -29,7 +33,7 @@ var account_index_ops = {
             },
             dataType: "json",
             success: function (res) {
-                alert(res.message);
+                common_ops.alert("success");
                 if (res.code == 200) {
                     window.location.href = window.location.href;
                 }
