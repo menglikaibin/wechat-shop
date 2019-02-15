@@ -72,7 +72,53 @@ class AccountController extends BaseController
     //账户编辑或添加
     public function actionSet()
     {
-        return $this->render("set");
+        if (\Yii::$app->request->isGet) {
+            return $this->render("set");
+        }
+
+        $nickname = trim($this->post("nickname"), "");
+        $mobile = trim($this->post("mobile"), "");
+        $email = trim($this->post("email"), "");
+        $login_name = trim($this->post("login_name"), "");
+        $login_pwd = trim($this->post("login_pwd"), "");
+        $date_now = date("Y-m-d H:i:s");
+
+        if (mb_strlen($nickname, "utf-8") < 1) {
+            return $this->renderJson([], "请输入符合规范的姓名", -1);
+        }
+        if (!preg_match("/^1[34578]\d{9}$/", $mobile)) {
+            return $this->renderJson([], "请输入符合规范的手机号码", -1);
+        }
+        if (!preg_match("/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/", $email)) {
+            return $this->renderJson([], "请输入符合规范的邮箱", -1);
+        }
+        if (mb_strlen($login_name, "utf-8") < 1) {
+            return $this->renderJson([], "请输入符合规范的登录名", -1);
+        }
+        if (mb_strlen($login_pwd, "utf-8") < 6) {
+            return $this->renderJson([], "请输入不小于6位数的密码", -1);
+        }
+
+        $acc = User::find()->where(["login_name" => $login_name])->count();
+
+        if ($acc) {
+            return $this->renderJson([], "该用户已存在,请重新输入", -1);
+        }
+
+        $model_user = new User();
+        $model_user->nickname = $nickname;
+        $model_user->mobile = $mobile;
+        $model_user->avatar = ConstantMapService::$default_avatar;
+        $model_user->login_name = $login_name;
+        $model_user->setSalt();
+        $model_user->setPassword($login_pwd);
+
+        $model_user->create_time = $date_now;
+        $model_user->updated_time = $date_now;
+
+        $model_user->save(false);
+
+        return $this->renderJson([], "操作成功~~");
     }
 
     //账户详情

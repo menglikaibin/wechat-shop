@@ -27,6 +27,17 @@ class User extends \yii\db\ActiveRecord
         $this->login_pwd = $this->setSaltPassword($password);
     }
 
+    public function setSalt($length = 16)
+    {
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#^&*";
+        $salt = '';
+        for ($i = 0; $i < $length; $i++) {
+            $salt .= $chars[mt_rand(0, strlen($chars) - 1)];
+        }
+        $this->login_salt = $salt;
+
+    }
+
 
     //生成加密密码
     public function setSaltPassword($password)
