@@ -73,7 +73,16 @@ class AccountController extends BaseController
     public function actionSet()
     {
         if (\Yii::$app->request->isGet) {
-            return $this->render("set");
+            $id = intval($this->get("id", 0));
+            $info = [];
+
+            if ($id) {
+                $info = User::find()->where(['uid' => $id])->one();
+            }
+
+            return $this->render("set", [
+                'info' => $info
+            ]);
         }
 
         $nickname = trim($this->post("nickname"), "");
