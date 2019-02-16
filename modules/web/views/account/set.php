@@ -1,5 +1,6 @@
 <?php
 use app\common\services\StaticService;
+use app\common\services\ConstantMapService;
 StaticService::includeAppJsStatic("/js/web/account/set.js", ['depends' => app\assets\WebAsset::className()]);
 ?>
 <div class="row  border-bottom">
@@ -48,13 +49,14 @@ StaticService::includeAppJsStatic("/js/web/account/set.js", ['depends' => app\as
             <div class="form-group">
                 <label class="col-lg-2 control-label">登录密码:</label>
                 <div class="col-lg-10">
-                    <input type="password" name="login_pwd" class="form-control" autocomplete="new-password" placeholder="请输入登录密码~~" value="******">
+                    <input type="password" name="login_pwd" class="form-control" autocomplete="new-password"
+                           placeholder="请输入登录密码~~" value="<?= $info ? ConstantMapService::$default_login_pwd : ""?>">
                 </div>
             </div>
             <div class="hr-line-dashed"></div>
             <div class="form-group">
                 <div class="col-lg-4 col-lg-offset-2">
-                    <input type="hidden" name="id" value="13">
+                    <input type="hidden" name="id" value="<?= $info ? $info['uid'] : "";?>">
                     <button class="btn btn-w-m btn-outline btn-primary save">保存</button>
                 </div>
             </div>

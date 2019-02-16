@@ -20,4 +20,6 @@ class ConstantMapService
 
     public static $default_avatar = "default_avatar";
 
+    public static $default_login_pwd = "******";
+
 }

@@ -8,6 +8,7 @@
 namespace app\modules\web\controllers;
 
 use app\common\services\ConstantMapService;
+use app\common\services\UrlService;
 use app\models\User;
 use app\modules\web\controllers\common\BaseController;
 
@@ -90,6 +91,7 @@ class AccountController extends BaseController
         $email = trim($this->post("email"), "");
         $login_name = trim($this->post("login_name"), "");
         $login_pwd = trim($this->post("login_pwd"), "");
+        $id = intval($this->post("id", 0));
         $date_now = date("Y-m-d H:i:s");
 
         if (mb_strlen($nickname, "utf-8") < 1) {
@@ -108,23 +110,32 @@ class AccountController extends BaseController
             return $this->renderJson([], "请输入不小于6位数的密码", -1);
         }
 
-        $acc = User::find()->where(["login_name" => $login_name])->count();
+        $acc = User::find()->where(["login_name" => $login_name])->andWhere(["!=", "uid", $id])->count();
 
         if ($acc) {
             return $this->renderJson([], "该用户已存在,请重新输入", -1);
         }
 
-        $model_user = new User();
+        $info = User::find()->where(['uid' => $id])->one();
+        if ($info) {
+            $model_user = $info;
+        }else{
+            $model_user = new User();
+            $model_user->setSalt();
+            $model_user->create_time = $date_now;
+        }
+
         $model_user->nickname = $nickname;
         $model_user->mobile = $mobile;
+        $model_user->email = $email;
         $model_user->avatar = ConstantMapService::$default_avatar;
         $model_user->login_name = $login_name;
-        $model_user->setSalt();
-        $model_user->setPassword($login_pwd);
 
-        $model_user->create_time = $date_now;
+        if ($login_pwd != ConstantMapService::$default_login_pwd) {
+            $model_user->setPassword($login_pwd);
+        }
+
         $model_user->updated_time = $date_now;
-
         $model_user->save(false);
 
         return $this->renderJson([], "操作成功~~");
@@ -133,7 +144,23 @@ class AccountController extends BaseController
     //账户详情
     public function actionInfo()
     {
-        return $this->render("info");
+        $id = intval($this->get("id", 0));
+        $reback_url = UrlService::buildWebUrl("/account/index");
+
+        //如果没有id则刷新页面
+        if (!$id) {
+            return $this->redirect($reback_url);
+        }
+
+        $info = User::find()->where(['uid' => $id])->one();
+        //如果没有找到用户信息则刷新页面
+        if (!$info) {
+            return $this->redirect($reback_url);
+        }
+
+        return $this->render("info",[
+            'info' => $info
+        ]);
     }
 
     //删除账户

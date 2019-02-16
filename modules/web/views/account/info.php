@@ -1,21 +1,14 @@
+<?php
+use \app\common\services\UrlService;
+?>
 
-<div class="row  border-bottom">
-    <div class="col-lg-12">
-        <div class="tab_title">
-            <ul class="nav nav-pills">
-                <li class="current">
-                    <a href="/web/account/index">账户列表</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+<?= Yii::$app->view->renderFile("@app/modules/web/views/common/tab_account.php", ['current' => "index"]) ?>
 <div class="row m-t">
     <div class="col-lg-12">
         <div class="row">
             <div class="col-lg-12">
                 <div class="m-b-md">
-                    <a class="btn btn-outline btn-primary pull-right" href="/web/account/set?id=12">
+                    <a class="btn btn-outline btn-primary pull-right" href="<?= UrlService::buildWebUrl("/account/set", ['id' => $info['uid']]) ?>">
                         <i class="fa fa-pencil"></i>编辑
                     </a>
                     <h2>账户信息</h2>
@@ -27,9 +20,9 @@
                 <img class="img-circle circle-border" src="/images/common/qrcode.jpg" width="100px" height="100px"/>
             </div>
             <div class="col-lg-10">
-                <p class="m-t">姓名：编程浪子郭大爷</p>
-                <p>手机：11012345679</p>
-                <p>邮箱：apanly@126.com</p>
+                <p class="m-t">姓名：<?= $info ? $info['nickname'] : ""?></p>
+                <p>手机：<?= $info ? $info['mobile'] : ""?></p>
+                <p>邮箱：<?= $info ? $info['email'] : ""?></p>
             </div>
         </div>
         <div class="row m-t">
