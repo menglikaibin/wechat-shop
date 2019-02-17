@@ -9,6 +9,7 @@ namespace app\modules\web\controllers;
 
 use app\common\services\ConstantMapService;
 use app\common\services\UrlService;
+use app\models\log\AppAccessLog;
 use app\models\User;
 use app\modules\web\controllers\common\BaseController;
 
@@ -158,8 +159,14 @@ class AccountController extends BaseController
             return $this->redirect($reback_url);
         }
 
+        $access_list = AppAccessLog::find()->where(['uid'=>$info['uid']])
+            ->orderBy(['id'=>SORT_DESC])
+            ->limit(10)
+            ->all();
+
         return $this->render("info",[
-            'info' => $info
+            'info' => $info,
+            'access_list' => $access_list
         ]);
     }
 
