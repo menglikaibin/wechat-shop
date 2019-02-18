@@ -11,23 +11,28 @@ use yii\web\Controller;
 
 class BrandController extends Controller
 {
+    public function __construct($id, $module, array $config = [])
+    {
+        parent::__construct($id, $module, $config);
+        $this->layout = "main";
+    }
+
     public function actionInfo()
     {
-        $this->layout = "main";
 
         return $this->render("info");
     }
 
     public function actionSet()
     {
-        $this->layout = "main";
+        if (\Yii::$app->request->isGet) {
+            return $this->render("set");
+        }
 
-        return $this->render("set");
     }
 
     public function actionImages()
     {
-        $this->layout = "main";
 
         return $this->render("images");
     }
