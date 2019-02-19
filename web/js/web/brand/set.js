@@ -1,7 +1,7 @@
 ;
 var brand_set_ops = {
     init : function () {
-        $(this).eventBind();
+        this.eventBind();
     },
     
     eventBind: function () {
@@ -24,7 +24,48 @@ var brand_set_ops = {
 
             if (name.length < 1) {
                 common_ops.tip("请输入符合规范的品牌名称", name_target);
+                return;
             }
+            if (!(/^1[34578]\d{9}$/.test(mobile))) {
+                common_ops.tip("请输入符合规范的手机号", mobile_target);
+                return;
+            }
+            if (address.length < 1) {
+                common_ops.tip("请输入符合规范的地址", address_target);
+                return;
+            }
+            if (description.length < 2) {
+                common_ops.tip("请输入符合规范的描述", description_target);
+                return;
+            }
+
+            btn_target.addClass("disabled");
+
+            var data = {
+                name: name,
+                mobile: mobile,
+                address: address,
+                description: description
+            };
+
+            $.ajax({
+                url: common_ops.buildWebUrl("/brand/set"),
+                type: "post",
+                data: data,
+                dataType: "json",
+                success: function (res) {
+                    btn_target.removeClass("disabled");
+                    
+                    var callback = null;
+                    if (res.code == 200) {
+                        callback = function () {
+                            window.location.href = common_ops.buildWebUrl("/brand/info");
+                        }
+                    }
+                    
+                    common_ops.alert(res.msg, callback);
+                }
+            })
         })
     }
 };
