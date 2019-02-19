@@ -21,8 +21,10 @@ class BrandController extends BaseController
 
     public function actionInfo()
     {
-
-        return $this->render("info");
+        $info = BrandSetting::find()->one();
+        return $this->render("info",[
+            'info' => $info
+        ]);
     }
 
     public function actionSet()
@@ -56,11 +58,13 @@ class BrandController extends BaseController
             $model_brand = new BrandSetting();
             $model_brand->created_time = $now;
         }
-        $model_brand->
-
-
-
-
+        $model_brand->name = $name;
+        $model_brand->mobile = $mobile;
+        $model_brand->address = $address;
+        $model_brand->description = $description;
+        $model_brand->updated_time = $now;
+        $model_brand->save(false);
+        return $this->renderJson([], "操作成功", 200);
 
     }
 
