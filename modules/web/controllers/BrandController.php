@@ -30,7 +30,14 @@ class BrandController extends BaseController
     public function actionSet()
     {
         if (\Yii::$app->request->isGet) {
-            return $this->render("set");
+            $id = $this->get("id", 0);
+            $info = [];
+            if ($id != 0) {
+                $info = BrandSetting::find()->where(['id'=>$id])->one();
+            }
+            return $this->render("set",[
+                'info' => $info
+            ]);
         }
         $name = trim($this->post("name"));
         $mobile = trim($this->post("mobile"));
