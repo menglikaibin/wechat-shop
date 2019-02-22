@@ -30,14 +30,6 @@ StaticService::includeAppJsStatic("@web/js/web/brand/set.js", ['depends' => app\
                             <input type="hidden" name="bucket" value="brand"/>
                             <input type="file" name="pic" accept="image/png, image/jpeg, image/jpg,image/gif">
                         </div>
-                        <span class="pic-each">
-							<img src="/uploads/brand/20170301/a8887738ab1bfd71765dd063fee4ddaa.jpg">
-							<span class="fa fa-times-circle del del_image" data="20170301/a8887738ab1bfd71765dd063fee4ddaa.jpg">
-                                <i>
-
-                                </i>
-                            </span>
-						</span>
                     </form>
                 </div>
             </div>

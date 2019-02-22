@@ -40,6 +40,7 @@ class BrandController extends BaseController
             ]);
         }
         $name = trim($this->post("name"));
+        $image_key = trim($this->post("image_key"));
         $mobile = trim($this->post("mobile"));
         $address = trim($this->post("address"));
         $description = trim($this->post("description"));
@@ -47,6 +48,9 @@ class BrandController extends BaseController
 
         if (mb_strlen($name, "utf-8") < 1) {
             return $this->renderJson([], "请输入符合规范的品牌", -1);
+        }
+        if (!$image_key) {
+            return $this->renderJson([], "请上传品牌logo", -1);
         }
         if (mb_strlen($mobile, "utf-8") < 1) {
             return $this->renderJson([], "请输入符合规范的手机", -1);
@@ -66,6 +70,7 @@ class BrandController extends BaseController
             $model_brand->created_time = $now;
         }
         $model_brand->name = $name;
+        $model_brand->logo = $image_key;
         $model_brand->mobile = $mobile;
         $model_brand->address = $address;
         $model_brand->description = $description;

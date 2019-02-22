@@ -7,6 +7,7 @@
  */
 namespace app\modules\web\controllers;
 
+use app\common\services\uploadService;
 use app\modules\web\controllers\common\BaseController;
 
 class UploadController extends BaseController
@@ -33,6 +34,12 @@ class UploadController extends BaseController
         }
 
         //上传图片业务逻辑 todo
-        return "<script>{$callback}.success('上传图片成功')</script>";
+        $ret = uploadService::uploadByFile($file_name, $_FILES['pic']['tmp_name'], $bucket);
+
+        if (!$ret) {
+            return "<script>{$callback}.error('".uploadService::getLastErrorCode()."')</script>";
+        }
+
+        return "<script>{$callback}.success('{$ret['path']}')</script>";
     }
 }

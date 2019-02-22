@@ -4,8 +4,21 @@ upload = {
         common_ops.alert(msg);
     },
 
-    success: function (msg) {
-        common_ops.alert(msg);
+    success: function (image_key) {
+        // common_ops.alert(1111);
+        console.log(22);
+        let html =
+            '<img src="' + image_key + '">' +
+            '<span class="fa fa-times-circle del del_image" data="' + image_key + '">' +
+                '<i>' +
+                    '' +
+                '</i>' +
+            '</span>';
+        if ($(".upload_pic_wrap .pic-each") > 0) {
+            $(".upload_pic_wrap .pic-each").html(html);
+        } else {
+            $(".upload_pic_wrap").append('<span class="pic-each">' + html + '</span>')
+        }
     }
 };
 
@@ -24,8 +37,12 @@ let brand_set_ops = {
 
             let name_target = $(".wrap_brand_set input[name=name]");
             let name = name_target.val();
+
+            let image_key = $(".wrap_brand_set .pic-each .del_image").attr("data");
+
             let mobile_target = $(".wrap_brand_set input[name=mobile]");
             let mobile = mobile_target.val();
+
             let address_target = $(".wrap_brand_set input[name=address]");
             let address = address_target.val();
 
@@ -34,6 +51,10 @@ let brand_set_ops = {
 
             if (name.length < 1) {
                 common_ops.tip("请输入符合规范的品牌名称", name_target);
+                return;
+            }
+            if ($(".wrap_brand_set .pic-each .del_image").size < 1) {
+                common_ops.alert("请上传品牌logo");
                 return;
             }
             if (!(/^1[34578]\d{9}$/.test(mobile))) {
@@ -53,9 +74,10 @@ let brand_set_ops = {
 
             let data = {
                 name: name,
+                image_key: image_key,
                 mobile: mobile,
                 address: address,
-                description: description
+                description: description,
             };
 
             $.ajax({
