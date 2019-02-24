@@ -122,6 +122,10 @@ WebAsset::register($this);
 
 </div>
 
+<div class="hidden_layout_wrap hidden">
+    <input type="hidden" name="upload_config" value='<?= "" ?>'>
+</div>
+
 <?php $this->endBody() ?>
 </body>
 </html>
