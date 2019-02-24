@@ -1,7 +1,10 @@
 <?php
+use \app\common\services\UrlService;
 use app\assets\WebAsset;
 
 WebAsset::register($this);
+
+$upload_config = Yii::$app->params['upload'];
 ?>
 
 <?php $this->beginPage() ?>
@@ -31,29 +34,29 @@ WebAsset::register($this);
                     </div>
                 </li>
                 <li class="dashboard">
-                    <a href="/web/dashboard/index"><i class="fa fa-dashboard fa-lg"></i>
+                    <a href="<?= UrlService::buildWwwUrl("dashboard/index") ?>"><i class="fa fa-dashboard fa-lg"></i>
                         <span class="nav-label">仪表盘</span></a>
                 </li>
                 <li class="account">
-                    <a href="/web/account/index"><i class="fa fa-user fa-lg"></i> <span class="nav-label">账号管理</span></a>
+                    <a href="<?= UrlService::buildWwwUrl("account/index") ?>"><i class="fa fa-user fa-lg"></i> <span class="nav-label">账号管理</span></a>
                 </li>
                 <li class="brand">
-                    <a href="/web/brand/info"><i class="fa fa-cog fa-lg"></i> <span class="nav-label">品牌设置</span></a>
+                    <a href="<?= UrlService::buildWwwUrl("brand/info") ?>"><i class="fa fa-cog fa-lg"></i> <span class="nav-label">品牌设置</span></a>
                 </li>
                 <li class="book">
-                    <a href="/web/book/index"><i class="fa fa-book fa-lg"></i> <span class="nav-label">图书管理</span></a>
+                    <a href="<?= UrlService::buildWwwUrl("book/index") ?>"><i class="fa fa-book fa-lg"></i> <span class="nav-label">图书管理</span></a>
                 </li>
                 <li class="member">
-                    <a href="/web/member/index"><i class="fa fa-group fa-lg"></i> <span class="nav-label">会员列表</span></a>
+                    <a href="<?= UrlService::buildWwwUrl("member/index")?>"><i class="fa fa-group fa-lg"></i> <span class="nav-label">会员列表</span></a>
                 </li>
                 <li class="finance">
-                    <a href="/web/finance/index"><i class="fa fa-rmb fa-lg"></i> <span class="nav-label">财务管理</span></a>
+                    <a href="<?= UrlService::buildWwwUrl("finance/index")?>"><i class="fa fa-rmb fa-lg"></i> <span class="nav-label">财务管理</span></a>
                 </li>
                 <li class="market">
-                    <a href="/web/qrcode/index"><i class="fa fa-share-alt fa-lg"></i> <span class="nav-label">营销渠道</span></a>
+                    <a href="<?= UrlService::buildWwwUrl("qrcode/index")?>"><i class="fa fa-share-alt fa-lg"></i> <span class="nav-label">营销渠道</span></a>
                 </li>
                 <li class="stat">
-                    <a href="/web/stat/index"><i class="fa fa-bar-chart fa-lg"></i> <span class="nav-label">统计管理</span></a>
+                    <a href="<?= UrlService::buildWwwUrl("stat/index")?>"><i class="fa fa-bar-chart fa-lg"></i> <span class="nav-label">统计管理</span></a>
                 </li>
             </ul>
 
@@ -123,7 +126,7 @@ WebAsset::register($this);
 </div>
 
 <div class="hidden_layout_wrap hidden">
-    <input type="hidden" name="upload_config" value='<?= "" ?>'>
+    <input type="hidden" name="upload_config" value='<?= json_encode($upload_config) ?>'>
 </div>
 
 <?php $this->endBody() ?>

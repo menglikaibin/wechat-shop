@@ -7,6 +7,7 @@
  */
 namespace app\modules\web\controllers;
 
+use app\models\brand\BrandImages;
 use app\models\brand\BrandSetting;
 use yii\web\Controller;
 use app\modules\web\controllers\common\BaseController;
@@ -82,7 +83,31 @@ class BrandController extends BaseController
 
     public function actionImages()
     {
+        $list = BrandImages::find()->orderBy(['id' => SORT_DESC])->all();
+        return $this->render("images",[
+            'list' => $list
+        ]);
+    }
 
-        return $this->render("images");
+    //上传图片
+    public function actionSetImage()
+    {
+        $image_key = trim($this->post("image_key"));
+        if (!$image_key) {
+            return $this->renderJson([], "请上传图片之后再提交", -1);
+        }
+
+        $total_count = BrandImages::find()->count();
+
+        if ($total_count > 5) {
+            return $this->renderJson([], "最多上传5张", -1);
+        }
+
+        $model = new BrandImages();
+        $model->image_key = $image_key;
+        $model->created_time = date('Y-m-d H:i:s');
+        $model->save(false);
+
+        return $this->renderJson([], "操作成功", 200);
     }
 }

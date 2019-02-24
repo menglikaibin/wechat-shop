@@ -7,10 +7,9 @@ upload = {
     success: function (image_key) {
         // let url = common_ops.buildPicUrl("brand", image_key);
         let html =
-            '<img src="' + common_ops.buildPicUrl("brand", image_key) + '">' +
+            '<img src="' + image_key + '">' +
             '<span class="fa fa-times-circle del del_image" data="' + image_key + '">' +
                 '<i>' +
-                    '' +
                 '</i>' +
             '</span>';
         let ele = $(".upload_pic_wrap .pic-each");

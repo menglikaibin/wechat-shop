@@ -30,14 +30,16 @@ StaticService::includeAppJsStatic("@web/js/web/brand/set.js", ['depends' => app\
                             <input type="hidden" name="bucket" value="brand"/>
                             <input type="file" name="pic" accept="image/png, image/jpeg, image/jpg,image/gif">
                         </div>
-                        <?php if($info && $info['logo']): ?>
-                        <span class="pic_each">
-                            <img src="<?= UrlService::buildPicUrl("brand", $info['logo']) ?>" height="80px" width="80px">
-                            <span class="fa fa-times-circle del del_image" data="<?= UrlService::buildPicUrl("brand", $info['logo']) ?>">
+                        <?php if( $info && $info['logo'] ):?>
+                        <span class="pic-each">
+							<img src="<?=UrlService::buildPicUrl("brand",$info['logo']);?>">
+							<span class="fa fa-times-circle del del_image" data="<?=$info['logo'];?>">
+                                <i>
 
+                                </i>
                             </span>
-                        </span>
-                        <?php endif; ?>
+						</span>
+                        <?php endif;?>
                     </form>
                 </div>
             </div>
