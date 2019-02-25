@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <div class="row border-bottom">
     <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
@@ -7,9 +11,9 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-						<span class="m-r-sm text-muted welcome-message">
-                            欢迎使用编程浪子图书商城管理后台
-                        </span>
+                <span class="m-r-sm text-muted welcome-message">
+                    欢迎使用编程浪子图书商城管理后台
+                </span>
             </li>
             <li class="hidden">
                 <a class="count-info" href="javascript:void(0);">
