@@ -5,6 +5,7 @@ use app\assets\WebAsset;
 WebAsset::register($this);
 
 $upload_config = Yii::$app->params['upload'];
+//print_r(json_encode($upload_config));die;
 ?>
 
 <?php $this->beginPage() ?>
@@ -72,9 +73,9 @@ $upload_config = Yii::$app->params['upload'];
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                <span class="m-r-sm text-muted welcome-message">
-                    欢迎使用编程浪子图书商城管理后台
-                </span>
+                        欢迎使用编程浪子图书商城管理后台
+
+                        <span class="m-r-sm text-muted welcome-message"></span>
                     </li>
                     <li class="hidden">
                         <a class="count-info" href="javascript:void(0);">
@@ -125,8 +126,8 @@ $upload_config = Yii::$app->params['upload'];
 
 </div>
 
-<div class="hidden_layout_wrap hidden">
-    <input type="hidden" name="upload_config" value='<?= json_encode($upload_config) ?>'>
+<div class="hidden_layout_warp hidden">
+    <input type="hidden" name="upload_config" value='<?= json_encode($upload_config); ?>'>
 </div>
 
 <?php $this->endBody() ?>

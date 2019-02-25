@@ -28,14 +28,14 @@ StaticService::includeAppJsStatic("@web/js/web/brand/image.js", ['depends' => \a
             <?php foreach ($list as $item):?>
             <tr>
                 <td>
-                    <img src="/uploads/brand/20170303/e9a3909b1c2db975d1b3c21c249c684e.jpg"
+                    <img src="<?= UrlService::buildPicUrl("brand", $item['image_key'])?>"
                          style="width: 100px;height: 100px;"/>
                 </td>
                 <td>
-                    <a target="_blank" href="/uploads/brand/20170303/e9a3909b1c2db975d1b3c21c249c684e.jpg">查看大图</a>
+                    <a target="_blank" href="<?= UrlService::buildPicUrl("brand", $item['image_key'])?>">查看大图</a>
                 </td>
                 <td>
-                    <a class="m-l remove" href="javascript:void(0);" data="6">
+                    <a class="m-l remove" href="javascript:void(0);" data="<?= $item['id'] ?>">
                         <i class="fa fa-trash fa-lg"></i>
                     </a>
                 </td>

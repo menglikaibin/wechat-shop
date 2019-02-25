@@ -84,6 +84,7 @@ class BrandController extends BaseController
     public function actionImages()
     {
         $list = BrandImages::find()->orderBy(['id' => SORT_DESC])->all();
+
         return $this->render("images",[
             'list' => $list
         ]);
@@ -93,13 +94,14 @@ class BrandController extends BaseController
     public function actionSetImage()
     {
         $image_key = trim($this->post("image_key"));
+
         if (!$image_key) {
             return $this->renderJson([], "请上传图片之后再提交", -1);
         }
 
         $total_count = BrandImages::find()->count();
 
-        if ($total_count > 5) {
+        if ($total_count >= 5) {
             return $this->renderJson([], "最多上传5张", -1);
         }
 
@@ -109,5 +111,22 @@ class BrandController extends BaseController
         $model->save(false);
 
         return $this->renderJson([], "操作成功", 200);
+    }
+
+    public function actionImageOps()
+    {
+        $id = trim($this->post("id"));
+
+        if (!$id) {
+            return $this->renderJson([], "请选择要删除的图片", -1);
+        }
+
+        $info = BrandImages::find()->where(['id'=>$id])->one();
+        if (!$info) {
+            return $this->renderJson([], "所要删除的图片不存在", -1);
+        }
+
+        $info->delete();
+        return $this->renderJson([], "删除成功");
     }
 }

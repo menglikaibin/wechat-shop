@@ -113,8 +113,8 @@ var common_ops = {
         $("#side-menu li."+nav_name).addClass("active");
     },
     buildWebUrl:function( path ,params){
-        var url =   "/web" + path;
-        var _paramUrl = '';
+        let url =   "/web" + path;
+        let _paramUrl = '';
         if( params ){
             _paramUrl = Object.keys(params).map(function(k) {
                 return [encodeURIComponent(k), encodeURIComponent(params[k])].join("=");
@@ -126,6 +126,7 @@ var common_ops = {
     },
     buildPicUrl:function( bucket,img_key ){
         let upload_config = eval( '(' + $(".hidden_layout_warp input[name=upload_config]").val() +')' );
+        // console.log(upload_config);
         let domain = "http://" + window.location.hostname;
         return domain + upload_config[ bucket ] + "/" + img_key;
     },

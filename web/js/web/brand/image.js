@@ -1,7 +1,7 @@
 ;
-let upload = {
+upload = {
     error: function (msg) {
-        $.alert(msg);
+        common_ops.alert(msg);
     },
     success: function (file_key, type) {
         if (!file_key) {
@@ -39,18 +39,21 @@ let brand_image_ops = {
                 return;
             }
 
-            if ($("#brand_image_wrap .pic_each").size() < 1) {
+            if ($("#brand_image_wrap .pic-each").size() < 1) {
                 common_ops.alert("请上传图片");
                 return;
             }
 
             btn_target.addClass("disabled");
+            let data = {
+                image_key: $("#brand_image_wrap .pic-each .del_image").attr("data")
+            };
 
             $.ajax({
-                url: common_ops.buildWwwUrl("/brand/set-image"),
+                url: common_ops.buildWebUrl("/brand/set-image"),
                 type: "post",
                 dataType: "json",
-                data: {image_key: $("#brand_image_wrap .pic_each .del_image")},
+                data: data,
                 success: function (res) {
                     btn_target.removeClass("disabled");
                     let callback = null;
@@ -65,6 +68,33 @@ let brand_image_ops = {
             })
 
         });
+
+        $(".remove").click(function () {
+            let id = $(this).attr("data");
+            let callback = {
+                'ok': function () {
+                    $.ajax({
+                        url: common_ops.buildWebUrl("/brand/image-ops"),
+                        type: "post",
+                        dataType: "json",
+                        data: {id: id},
+                        success: function (res) {
+                            let callback = null;
+                            if (res.code == 200) {
+                                callback = function () {
+                                    window.location.reload();
+                                }
+                            }
+                            common_ops.alert(res.msg, callback);
+                        }
+                    })
+                },
+                'cancel': null
+            };
+            common_ops.confirm("确认删除?", callback);
+        })
+
+
     },
     delete_img: function () {
         $("#brand_image_wrap .del_image").unbind().click(function () {
