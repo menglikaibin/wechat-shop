@@ -1,22 +1,22 @@
 ;
-var account_set_ops = {
+let account_set_ops = {
     init: function () {
         this.eventBind();
     },
 
     eventBind: function () {
         $(".wrap_account_set .save").click(function () {
-            var btn_target = $(this);
+            let btn_target = $(this);
             if (btn_target.hasClass("disabled")) {
                 common_ops.alert("正在处理,请不要重复提交");
                 return;
             }
 
-            var nickname = $(".wrap_account_set input[name=nickname]").val();
-            var mobile = $(".wrap_account_set input[name=mobile]").val();
-            var email = $(".wrap_account_set input[name=email]").val();
-            var login_name = $(".wrap_account_set input[name=login_name]").val();
-            var login_pwd = $(".wrap_account_set input[name=login_pwd]").val();
+            let nickname = $(".wrap_account_set input[name=nickname]").val();
+            let mobile = $(".wrap_account_set input[name=mobile]").val();
+            let email = $(".wrap_account_set input[name=email]").val();
+            let login_name = $(".wrap_account_set input[name=login_name]").val();
+            let login_pwd = $(".wrap_account_set input[name=login_pwd]").val();
 
             if (nickname.length < 1) {
                 common_ops.tip("请输入符合规范的姓名", $(".wrap_account_set input[name=nickname]"));
@@ -41,7 +41,7 @@ var account_set_ops = {
 
             btn_target.addClass("disabled");
 
-            var data = {
+            let data = {
                 "nickname": nickname,
                 "mobile": mobile,
                 "email": email,
@@ -57,7 +57,7 @@ var account_set_ops = {
                 data: data,
                 success: function (res) {
                     btn_target.removeClass("disabled");
-                    var callback = null;
+                    let callback = null;
                     
                     if (res.code == 200) {
                         callback = function () {

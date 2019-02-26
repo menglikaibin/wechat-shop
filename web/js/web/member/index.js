@@ -35,7 +35,7 @@ let member_ops = {
                         if (res.code === 200) {
                             callback = function () {
                                 window.location.reload();
-                            }
+                            };
                         }
                         common_ops.alert(res.msg, callback);
                     }

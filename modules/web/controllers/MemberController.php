@@ -18,7 +18,7 @@ class MemberController extends BaseController
     public function actionIndex()
     {
         //获取前端传过来的筛选条件
-        $mix_kw = trim($this->get("imx_kw", "")); //关键字
+        $mix_kw = trim($this->get("mix_kw", "")); //关键字
         $status = intval($this->get("status", ConstantMapService::$status_default)); //账号状态
         $p      = intval($this->get("p", 1)); //当前页
         $p      = $p > 0 ? $p : 1;
@@ -112,20 +112,73 @@ class MemberController extends BaseController
 
         $info->updated_time = date('Y-m-d H:i:s');
         $info->update(false);
-        return $this->renderJson([], "操作成功", -1);
+        return $this->renderJson([], "操作成功", 200);
 
     }
 
     public function actionInfo()
     {
+        $id = intval($this->get('id', 0));
+        $reback_url = UrlService::buildWebUrl("/member/index");
 
-        return $this->render("info");
+        if (!$id) {
+            return $this->redirect($reback_url);
+        }
+
+        $info = Member::find()->where(['id' => $id])->one();
+
+        if (!$info) {
+            return $this->redirect($reback_url);
+        }
+
+        return $this->render("info",[
+            'info' => $info
+        ]);
     }
 
     public function actionSet()
     {
+        if (\Yii::$app->request->isGet) {
+            $id = intval($this->get('id', 0));
+            $info = [];
+            if ($id) {
+                $info = Member::find()->where(['id'=>$id])->one();
+            }
+            return $this->render("set",[
+                'info' => $info
+            ]);
+        }
 
-        return $this->render("set");
+        $id = intval($this->post('id', 0));
+        $nickname = trim($this->post('nickname', ""));
+        $mobile = floatval($this->post('mobile', 0));
+        $datenow = date('Y-m-d H:i:s');
+
+        if (mb_strlen($nickname, "utf8") < 1) {
+            return $this->renderJson([], "请输入符合规范的名字", -1);
+        }
+        if (!preg_match("/^1[34578]\d{9}$/", $mobile)) {
+            return $this->renderJson([], "请输入符合规范的手机号");
+        }
+
+        $info = [];
+        if ($id) {
+            $info = Member::find()->where(['id'=>$id])->one();
+        }
+        if ($info) {
+            $model_member = $info;
+        } else {
+            $model_member = new Member();
+            $model_member->status = 1;
+            $model_member->avatar = ConstantMapService::$default_avatar;
+            $model_member->created_time = $datenow;
+        }
+
+        $model_member->nickname = $nickname;
+        $model_member->mobile   = $mobile;
+        $model_member->updated_time = $datenow;
+        $model_member->save(false);
+        return $this->renderJson([], "操作成功", 200);
     }
 
     public function actionComment()

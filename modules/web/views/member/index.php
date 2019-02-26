@@ -6,20 +6,7 @@ use app\common\services\ConstantMapService;
 StaticService::includeAppJsStatic("@web/js/web/member/index.js", ['depends' => \app\assets\WebAsset::className()]);
 ?>
 
-<div class="row  border-bottom">
-    <div class="col-lg-12">
-        <div class="tab_title">
-            <ul class="nav nav-pills">
-                <li class="current">
-                    <a href="<?= UrlService::buildWebUrl("/member/index") ?>">会员列表</a>
-                </li>
-                <li>
-                    <a href="<?= UrlService::buildWebUrl("/member/comment") ?>">会员评论</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+<?= Yii::$app->view->renderFile("@app/modules/web/views/common/tab_member.php", ['current'=>"index"]); ?>
 <div class="row">
     <div class="col-lg-12">
         <form class="form-inline wrap_search">
