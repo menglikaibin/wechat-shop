@@ -20,6 +20,7 @@ class BaseController extends BaseWebController
 {
     protected $auth_cookie_name = "mooc_book";
     public $current_user = null;//当前登录人信息
+    protected $page_size = 50;
 
     public $allowAllAction = [
         "web/user/login"
