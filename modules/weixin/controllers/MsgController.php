@@ -17,6 +17,7 @@ class MsgController extends BaseWebController
         if (array_key_exists("echostr", $_GET) && $_GET['echostr']) {
             return $_GET['echostr'];//用于微信第一次认证
         }
+        return;
     }
 
     public function checkSignature()
