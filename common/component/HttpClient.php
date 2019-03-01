@@ -1,6 +1,6 @@
 <?php
 
-namespace app\common\components;
+namespace app\common\component;
 use app\common\services\BaseService;
 use Yii;
 

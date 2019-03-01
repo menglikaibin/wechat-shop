@@ -25,7 +25,7 @@
         </div>
         <div class="col-md-6">
             <div class="ibox-content">
-                <form class="m-t" role="form" action="http://www.imoocshop.com/web/user/login" method="post">
+                <form class="m-t" role="form" action="<?= Yii::$app->params['domain']['web'] . "/user/login" ?>" method="post">
                     <div class="form-group text-center">
                         <h2 class="font-bold">登录</h2>
                     </div>

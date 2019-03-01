@@ -3,7 +3,7 @@
 namespace app\common\services\weixin;
 
 
-use app\common\components\HttpClient;
+use app\common\component\HttpClient;
 use app\common\services\BaseService;
 use app\models\member\OauthAccessToken;
 
