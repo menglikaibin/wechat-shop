@@ -50,7 +50,6 @@ class UserController extends BaseController
         if (!$user_info->verifyPassword($login_pwd)) {
             return $this->renderJs("请输入正确的用户名和密码~~3",UrlService::buildWebUrl('/user/login'));
         }
-
         //使用cookie保存登录人信息
         //token加密算法 md5(login_name + login_pwd + login_salt);
         $this->setLoginStatus($user_info);

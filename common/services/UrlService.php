@@ -27,7 +27,7 @@ class UrlService
     {
         $domain_config = \Yii::$app->params['domain'];
         $path = Url::toRoute(array_merge([$path],$params));
-        return $domain_config['m'].$path;
+        return $domain_config['www'].$path;
     }
 
     //构建官网链接
