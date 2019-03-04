@@ -15,7 +15,7 @@ StaticService::includeAppJsStatic("@web/js/web/book/cat.js", ['depends'=>\app\as
                     <select name="status" class="form-control inline">
                         <option value="<?= ConstantMapService::$status_default ?>">请选择状态</option>
                         <?php foreach($status_mapping as $key=>$value):  ?>
-                        <option value="<?= $key; ?>"><?= $status_mapping[$key] ?></option>
+                        <option value="<?= $key; ?>" <?php if ($search_conditions['status']==$key): ?>selected<?php endif;?>><?= $status_mapping[$key] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

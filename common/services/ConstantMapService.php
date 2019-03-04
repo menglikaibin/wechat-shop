@@ -16,7 +16,7 @@ class ConstantMapService
     //账号状态
     public static $status_mapping=[
         1 => '正常',
-        0 => '已删除'
+        0 => '已删除',
     ];
 
     public static $sex_mapping = [

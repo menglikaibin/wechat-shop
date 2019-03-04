@@ -13,7 +13,7 @@ let book_cat_ops = {
         });
         $(".wrap_search select[name=stauts]").change(function () {
             $(".wrap_search").submit();
-        })
+        });
     },
     ops: function (act, id) {
         let callback = {

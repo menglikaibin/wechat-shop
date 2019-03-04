@@ -34,6 +34,7 @@ class UtilService
 
     public static function ipagination($param)
     {
+//        print_r($param);die;
         $ret = [
             'previous'  => true,
             'next'      => true,
@@ -41,7 +42,7 @@ class UtilService
             'end'       => 0,
             'total_page'=> 0,
             'current'   => 0,
-            'page_size' => intval($param['page_size']),
+            'page_size' => intval($param['page_size'])!==null ? intval($param['page_size']) : 10,
             'offset'    => 0
         ];
 

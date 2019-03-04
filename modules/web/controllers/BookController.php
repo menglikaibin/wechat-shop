@@ -8,6 +8,7 @@
 namespace app\modules\web\controllers;
 
 use app\common\services\ConstantMapService;
+use app\common\services\UtilService;
 use app\models\book\Book;
 use app\models\book\BookCat;
 use app\modules\web\controllers\common\BaseController;
@@ -22,8 +23,81 @@ class BookController extends BaseController
 
     public function actionIndex()
     {
+        $mix_kw = trim($this->get("mix_kw", ""));
+        $status = intval($this->get("status", ConstantMapService::$status_default));
+        $cat_id = intval($this->get("cat_id", 0));
+        $p = intval($this->get("p", 1));
+        $p = ($p > 0) ? $p : 1;
 
-        return $this->render("index");
+        $query = Book::find();
+
+        if ($mix_kw) {
+            $where_nickname = ['like', 'name', $mix_kw];
+            $where_tags = ['like', 'tags', $mix_kw];
+            $query->where(['or', $where_nickname, $where_tags]);
+        }
+
+        if ($status > ConstantMapService::$status_default) {
+            $query->andWhere(['status' => $status]);
+        }
+
+        if ($cat_id) {
+            $query->andWhere(['cat_id'=>$cat_id]);
+        }
+
+        //计算从数据库取时的偏移量
+        $offset = ($p - 1) * $this->page_size;
+        $total_res_count = $query->count();
+
+        $page = UtilService::ipagination([
+            'total_count' => $total_res_count,
+            'page_size' => $this->page_size,
+            'page' => $p,
+            'display' => 10
+        ]);
+
+        //查询出从第p页开始的10条记录
+        $list = $query->orderBy(['id' => SORT_DESC])
+            ->offset($offset)
+            ->limit($this->page_size)
+            ->all();
+        $cat_mapping = BookCat::find()->orderBy(['id'=>SORT_DESC])->indexBy("id")->all();
+//        foreach ($cat_mapping as $key => $value) {
+//            print_r($key);
+//            print_r($value);
+//            echo "<br>";
+//        }
+//        die;
+
+        $data = [];
+
+        if ($list) {
+            foreach ($list as $item) {
+                $tmp_cat_info = isset($cat_mapping[$item['cat_id']]) ? $cat_mapping[$item['cat_id']] : [];
+                $data[] = [
+                    'id'    => $item['id'],
+                    'name'  => UtilService::encode($item['name']),
+                    'price' => UtilService::encode($item['price']),
+                    'stock' => UtilService::encode($item['stock']),
+                    'tags' => UtilService::encode($item['tags']),
+                    'status' => UtilService::encode($item['status']),
+                    'cat_name' => $tmp_cat_info ? UtilService::encode($tmp_cat_info['name']) : ""
+                ];
+            }
+        }
+
+        return $this->render("index",[
+            'pages' => $page,
+            'list' => $data,
+            'search_conditions' => [
+                'mix_kw' => $mix_kw,
+                'p' => $p,
+                'status' => $status,
+                'cat_id' => $cat_id
+            ],
+            'status_mapping' => ConstantMapService::$status_mapping,
+            'cat_mapping' => $cat_mapping
+        ]);
     }
 
     public function actionSet()
