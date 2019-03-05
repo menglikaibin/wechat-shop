@@ -1,16 +1,16 @@
 <?php
 
 return [
-//    'domain' => [
-//        'www' => "http://www.imoocshop.com",
-//        'web' => "http://www.imoocshop.com/web",
-//        'm'   => "http://www.imoocshop.com/m"
-//    ],
     'domain' => [
-        'www' => "http://wukaibin.natapp1.cc",
-        'web' => "http://wukaibin.natapp1.cc/web",
-        'm'   => "http://wukaibin.natapp1.cc/m"
+        'www' => "http://www.imoocshop.com",
+        'web' => "http://www.imoocshop.com/web",
+        'm'   => "http://www.imoocshop.com/m"
     ],
+//    'domain' => [
+//        'www' => "http://wukaibin.natapp1.cc",
+//        'web' => "http://wukaibin.natapp1.cc/web",
+//        'm'   => "http://wukaibin.natapp1.cc/m"
+//    ],
 //    'domain' => [
 //        'www' => "http://319eadf9.ngrok.io",
 //        'web' => "http://319eadf9.ngrok.io/web",

@@ -21,6 +21,7 @@ class BookController extends BaseController
         $this->layout = "main";
     }
 
+    //图书展示页面
     public function actionIndex()
     {
         $mix_kw = trim($this->get("mix_kw", ""));
@@ -100,6 +101,7 @@ class BookController extends BaseController
         ]);
     }
 
+    //添加移除图书操作
     public function actionOps()
     {
         if (!\Yii::$app->request->isPost) {
@@ -137,8 +139,18 @@ class BookController extends BaseController
 
     public function actionSet()
     {
-
-        return $this->render("set");
+        if (\Yii::$app->request->isGet) {
+            $id = intval($this->get('id', 0));
+            $info = [];
+            if ($id) {
+                $info = Book::find()->where(['id'=>$id])->one();
+            }
+            $cat_list = BookCat::find()->orderBy(['id'=>SORT_DESC])->all();
+            return $this->render("set",[
+                'info' => $info,
+                'cat_list' => $cat_list
+            ]);
+        }
     }
 
     public function actionInfo()

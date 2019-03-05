@@ -11,9 +11,13 @@ let book_cat_ops = {
         $(".recover").click(function () {
             that.ops("recover", $(this).attr("data"));
         });
-        $(".wrap_search select[name=stauts]").change(function () {
+        // $(".wrap_search select[name=stauts]").onchange(function () {
+        //     $(".wrap_search").submit();
+        // });
+        $("#select_test").change(function () {
             $(".wrap_search").submit();
         });
+
     },
     ops: function (act, id) {
         let callback = {
