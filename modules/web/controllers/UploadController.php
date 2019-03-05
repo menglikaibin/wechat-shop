@@ -8,6 +8,7 @@
 namespace app\modules\web\controllers;
 
 use app\common\services\uploadService;
+use app\common\services\UtilService;
 use app\modules\web\controllers\common\BaseController;
 
 class UploadController extends BaseController
@@ -41,5 +42,16 @@ class UploadController extends BaseController
         }
 
         return "<script>{$callback}.success('{$ret['path']}')</script>";
+    }
+
+    /**
+     * 富文本编辑器上传接口
+     */
+    public function actionUeditor()
+    {
+        $action = $this->get("action");
+        $config_path = UtilService::getRootPath()."/web/js/plugins/ueditor/upload_config.json";
+        $config = json_decode(preg_replace("/\/\*[\s\S]+?\*\//", "", file_get_contents($config_path) ), true);
+
     }
 }

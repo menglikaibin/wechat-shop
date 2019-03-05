@@ -2,9 +2,9 @@
 use app\common\services\StaticService;
 use app\common\services\UrlService;
 
-//引入富文本编辑器插件
-StaticService::includeAppJsStatic("@web/js/plugins/ueditor/ueditor.all.js", ['depends'=>\app\assets\WebAsset::className()]);
+//引入富文本编辑器插件,第一第二个顺序不能错
 StaticService::includeAppJsStatic("@web/js/plugins/ueditor/ueditor.config.js", ['depends'=>\app\assets\WebAsset::className()]);
+StaticService::includeAppJsStatic("@web/js/plugins/ueditor/ueditor.all.js", ['depends'=>\app\assets\WebAsset::className()]);
 StaticService::includeAppJsStatic("@web/js/plugins/ueditor/lang/zh-cn/zh-cn.js", ['depends'=>\app\assets\WebAsset::className()]);
 
 //引入select2插件

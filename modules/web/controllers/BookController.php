@@ -7,10 +7,12 @@
  */
 namespace app\modules\web\controllers;
 
+use app\common\services\book\BookService;
 use app\common\services\ConstantMapService;
 use app\common\services\UtilService;
 use app\models\book\Book;
 use app\models\book\BookCat;
+use app\models\book\BookStockChangeLog;
 use app\modules\web\controllers\common\BaseController;
 
 class BookController extends BaseController
@@ -151,6 +153,65 @@ class BookController extends BaseController
                 'cat_list' => $cat_list
             ]);
         }
+        $id = intval($this->post('id', 0));
+        $cat_id = intval($this->post('cat_id', 0));
+        $name = trim($this->post('name', ""));
+        $price = floatval($this->post('price', 0));
+        $main_image = trim($this->post('main_image', ""));
+        $summary = trim($this->post('summary', ""));
+        $stock = trim($this->post('stock', 0));
+        $tags = trim($this->post("tags", ""));
+        $date_now = date('Y-m-d H:i:s');
+
+        if (!$cat_id) {
+            return $this->renderJson([], "请输入图书分类", -1);
+        }
+        if (mb_strlen($name) < 1) {
+            return $this->renderJson([], "请输入符合规范的书名", -1);
+        }
+        if ($price < 1) {
+            return $this->renderJson([], "请输入符合规范的售卖价格", -1);
+        }
+        if (mb_strlen($main_image) < 3) {
+            return $this->renderJson([], "请上传书封面图", -1);
+        }
+        if (mb_strlen($summary) < 10) {
+            return $this->renderJson([], "请输入书简介,且不小于10个字符", -1);
+        }
+        if ($stock < 1) {
+            return $this->renderJson([], "请输入符合规范的库存量", -1);
+        }
+        if (mb_strlen($tags, "utf-8") < 1) {
+            return $this->renderJson([], "请输入标签便于查询", -1);
+        }
+
+        $info = [];
+        if ($id) {
+            $info = Book::find()->where(['id'=>$id]);
+        }
+
+        if ($info) {
+            $model_book = $info;
+        } else {
+            $model_book = new Book;
+            $model_book->status = 1;
+            $model_book->created_time = $date_now;
+        }
+
+        $before_stock = $model_book->stock;
+
+        $model_book->cat_id = $cat_id;
+        $model_book->name = $name;
+        $model_book->price = $price;
+        $model_book->main_image = $main_image;
+        $model_book->summary = $summary;
+        $model_book->stock = $stock;
+        $model_book->tags = $tags;
+        $model_book->updated_time = $date_now;
+        if ($model_book->save(false)) {
+            BookService::getStockChangeLog($id, ($model_book->stock - $before_stock));
+        }
+        return $this->renderJson([], "操作成功");
     }
 
     public function actionInfo()
