@@ -100,6 +100,41 @@ class BookController extends BaseController
         ]);
     }
 
+    public function actionOps()
+    {
+        if (!\Yii::$app->request->isPost) {
+            return $this->renderJson([], ConstantMapService::$default_syserror, -1);
+        }
+
+        $id = intval($this->post("id", []));
+        $act = trim($this->post("act", 0));
+
+        if (!$id) {
+            return $this->renderJson([], $act=="remove"?"请选择要删除的账号":"请选择要恢复的账号", -1);
+        }
+        if (!in_array($act, ["remove", "recover"])) {
+            return $this->renderJson([], "操作有误,请重试", -1);
+        }
+
+        $info = Book::find()->where(['id'=>$id])->one();
+        if (!$info) {
+            return $this->renderJson([], "操作账号不存在", -1);
+        }
+
+        switch ($act) {
+            case "remove":
+                $info->status = 0;
+                break;
+            case "recover":
+                $info->status = 1;
+                break;
+        }
+
+        $info->updated_time = date('Y-m-d H:i:s');
+        $info->update(false);
+        return $this->renderJson([], "操作成功", 200);
+    }
+
     public function actionSet()
     {
 
