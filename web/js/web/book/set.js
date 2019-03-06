@@ -39,7 +39,6 @@ let book_set_ops = {
             $(".wrap_book_set .upload_pic_wrap").submit();
         });
 
-
         //标签
         $("#tags").tagsInput({
             width: 'auto',
@@ -160,13 +159,12 @@ let book_set_ops = {
                 [ 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
                     'insertimage', 'insertvideo', '|',
                     'horizontal', 'spechars','|','inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols' ]
-
             ],
             enableAutoSave:true,
             saveInterval:60000,
             elementPathEnabled:false,
             zIndex:4,
-            // serverUrl:common_ops.buildWebUrl('/upload/ueditor')
+            serverUrl:common_ops.buildWebUrl('/upload/ueditor')
         });
         that.ue.addListener('beforeInsertImage', function (t,arg){
             console.log( t,arg );
