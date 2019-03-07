@@ -2,6 +2,8 @@
 namespace app\common\services;
 
 //上传服务
+use app\models\Images;
+
 class uploadService extends BaseService
 {
     public static function uploadByFile($file_name, $file_path, $bucket='')
@@ -43,10 +45,23 @@ class uploadService extends BaseService
             file_put_contents($upload_dir_path . $upload_full_name, file_get_contents($file_path));
         }
 
+        //调用保存图片方法
+        self::saveImage($bucket, $upload_full_name);
+
         return [
             'code' => 200,
             'path' => $upload_full_name,
             'prefix' => $upload_config[$bucket] . "/"
         ];
+    }
+
+    //保存图片资源
+    public static function saveImage($bucket='', $file_key='')
+    {
+        $model_image = new Images();
+        $model_image->bucket = $bucket;
+        $model_image->file_key = $file_key;
+        $model_image->created_time = date('Y-m-d H:i:s');
+        $model_image->save(false);
     }
 }
