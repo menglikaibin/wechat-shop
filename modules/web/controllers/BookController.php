@@ -9,10 +9,12 @@ namespace app\modules\web\controllers;
 
 use app\common\services\book\BookService;
 use app\common\services\ConstantMapService;
+use app\common\services\UrlService;
 use app\common\services\UtilService;
 use app\models\book\Book;
 use app\models\book\BookCat;
 use app\models\book\BookStockChangeLog;
+use app\models\Images;
 use app\modules\web\controllers\common\BaseController;
 
 class BookController extends BaseController
@@ -216,14 +218,64 @@ class BookController extends BaseController
 
     public function actionInfo()
     {
+        $id = intval($this->get('id', 0));
+        $reback_url = UrlService::buildWebUrl("/book/index");
+        if (!$id) {
+            return $this->redirect($reback_url);
+        }
 
-        return $this->render("info");
+        $info = Book::find()->where(['id'=>$id])->one();
+        if (!$info) {
+            return $this->redirect($reback_url);
+        }
+
+        //库存变更历史
+        $stock_change_list = BookStockChangeLog::find()->where(['book_id'=>$id])
+            ->orderBy(['id'=>SORT_DESC])->asArray()->all();
+
+        return $this->render("info",[
+            'info' => $info,
+            'stock_change_list' => $stock_change_list
+        ]);
     }
 
     public function actionImages()
     {
+        $p = intval($this->get('p', 1));
+        $p = $p ? $p : 1;
 
-        return $this->render("images");
+        $bucket = "book";
+        $query = Images::find()->where(['bucket'=>$bucket]);
+
+        $offset = ($p - 1) * $this->page_size;
+        $total_res_count = $query->count();
+
+        $pages = UtilService::ipagination([
+            'total_count' => $total_res_count,
+            'page_size' => $this->page_size,
+            'page' => $p,
+            'display' => 10
+        ]);
+
+        $list = $query->orderBy(['id'=>SORT_DESC])
+            ->offset($offset)
+            ->limit($this->page_size)
+            ->all();
+
+        $data = [];
+
+        if ($list) {
+            foreach ($list as $item) {
+                $data[] = [
+                    'url' => UrlService::buildPicUrl($bucket, $item['file_key'])
+                ];
+            }
+        }
+
+        return $this->render("images",[
+            'list' => $data,
+            'pages' => $pages
+        ]);
     }
 
     //分类列表
