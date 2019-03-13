@@ -99,7 +99,7 @@ class UploadController extends BaseController
             return $this->retUeditor("此图片已经上传过了");
         }
 
-        return $this->retUeditor("SUCCESS", UrlService::buildWebUrl($ret['prefix'] . $ret['path']));
+        return $this->retUeditor("SUCCESS", UrlService::buildWwwUrl($ret['prefix'] . $ret['path']));
     }
 
     /**
