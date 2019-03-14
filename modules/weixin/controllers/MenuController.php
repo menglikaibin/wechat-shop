@@ -16,12 +16,12 @@ class MenuController extends BaseWebController
                 [
                     "name" => "商城",
                     "type" => "view",
-                    "url"  => UrlService::buildMUrl("default/index")
+                    "url"  => UrlService::buildMUrl("/default/index")
                 ],
                 [
                     "name" => "我",
                     "type" => "view",
-                    "url"  => UrlService::buildMUrl("user/index")
+                    "url"  => UrlService::buildMUrl("/user/index")
                 ],
             ]
         ];
