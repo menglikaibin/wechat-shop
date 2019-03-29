@@ -29,10 +29,22 @@ class MsgController extends BaseWebController
         if (!$xml_data) {
             return "error xml";
         }
+
+//        $xml_data =
+//"<xml>
+//<ToUserName><![CDATA[gh_f55d07806dbf]]></ToUserName>
+//<FromUserName><![CDATA[o3hlb02oyDCn3ZYgHa3KekF00cwI]]></FromUserName>
+//<CreateTime>1553083541</CreateTime>
+//<MsgType><![CDATA[text]]></MsgType>
+//<Content><![CDATA[交房费]]></Content>
+//<MsgId>22234811850455947</MsgId>
+//</xml>";
+
         $xml_obj = simplexml_load_string($xml_data, "SimpleXMLElement", LIBXML_NOCDATA);
         $from_name = $xml_obj->FromUserName;
         $to_name = $xml_obj->ToUserName;
         $type = $xml_obj->MsgType;
+
 
         $res = ['type'=>"text", 'data'=>$this->defaultTip()];
 
@@ -85,13 +97,13 @@ class MsgController extends BaseWebController
     private function textTpl($from_name, $to_name, $content)
     {
         $tpl = <<<EOT
-        <xml>
-          <ToUserName><![CDATA[%s]]></ToUserName>
-          <FromUserName><![CDATA[%s]]></FromUserName>
-          <CreateTime>%s</CreateTime>
-          <MsgType><![CDATA[text]]></MsgType>
-          <Content><![CDATA[%s]]></Content>
-        </xml>
+<xml>
+<ToUserName><![CDATA[%s]]></ToUserName>
+<FromUserName><![CDATA[%s]]></FromUserName>
+<CreateTime>%s</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[%s]]></Content>
+</xml>
 EOT;
         return sprintf($tpl, $from_name, $to_name, time(), $content);
 
@@ -107,13 +119,13 @@ EOT;
     private function richTpl($from_name, $to_name, $data)
     {
         $tpl = <<<EOT
-        <xml>
-          <ToUserName><![CDATA[%s]]></ToUserName>
-          <FromUserName><![CDATA[%s]]></FromUserName>
-          <CreateTime>%s</CreateTime>
-          <MsgType><![CDATA[news]]></MsgType>
-          %s
-        </xml>
+<xml>
+<ToUserName><![CDATA[%s]]></ToUserName>
+<FromUserName><![CDATA[%s]]></FromUserName>
+<CreateTime>%s</CreateTime>
+<MsgType><![CDATA[news]]></MsgType>
+%s
+</xml>
 EOT;
         return sprintf($tpl, $from_name, $to_name, time(), $data);
     }
